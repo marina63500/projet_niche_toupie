@@ -1,0 +1,41 @@
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.slider {
+  position: relative;
+  height: 40vh;
+  width: 50vw;
+  overflow: hidden; /* masque ce qui dépasse */
+  margin: 20px auto;
+
+}
+
+.slider img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  position: absolute; /* pour placer les img les unes sur les autres */
+  top: 0;
+  left: 0;
+}
+
+.next, .prev{
+  color: #F7F6BB;
+  font-size: 3rem;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%); /* pour centrer verticalement */
+  background-color: rgba(135, 169, 34, 0.6); /* très transparent */
+  border-radius: 50%;
+}
+
+.next {
+  right: 0.5rem;
+}
+
+.prev {
+  left: 0.5rem;
+}

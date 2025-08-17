@@ -1,0 +1,36 @@
+{% extends 'base.html.twig' %}
+
+{% block stylesheets %}
+    {# {{ parent() }} #}
+    <link rel="stylesheet" href="{{ asset('styles/slider.css') }}">
+{% endblock %}
+
+
+
+{% block body %}
+   <h1>Bienvenue à La Niche à Toupie</h1>
+
+<div class="slider">
+   <div class="slide active">
+       <img src="{{ asset('images/portrait-chiens.webp') }}" alt="portrait des chiens de la niche à toupie" width="600px" height="400px">
+   </div>
+
+   <div class="slide">
+       <img src="{{ asset('images/chien_assis.webp') }}" alt="portrait d'un chien assis" width="600px" height="400px">
+   </div>
+
+   <div class="slide">
+       <img src="{{ asset('images/malinois.webp') }}" alt="portrait d'un malinois couché" width="600px" height="400px">
+   </div>
+
+    
+   <button class="prev"> <  </button>
+    
+
+   <button class="next"> > </button>
+    
+
+</div>
+
+{% endblock %}
+

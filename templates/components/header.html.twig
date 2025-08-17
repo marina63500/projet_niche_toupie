@@ -1,0 +1,61 @@
+<header>
+       
+    <nav class="navbar">
+
+        
+        {# <div class="container-fluid"> #}
+
+          <div class="logo" >
+            <img src="{{asset('images/logo_niche.webp')}}" class="navbar-logo" alt="logo du site" width="200" height="150">
+          </div>
+
+          <div class="navlinks">
+              <ul class="nav-items">
+
+                <li><a href="{{ path('app_home') }}">Accueil</a></li>
+                 <li><a href="">Horaire</a></li>
+                <li><a href="">Service</a></li>
+                <li><a href="">Contact</a></li>  
+              </ul>
+          </div>
+
+          {# <div class="auth-links">
+              <ul class="auth-links">
+                  <li><a href="">Se connecter</a></li>
+                  <li><a href="">S'inscrire</a></li>
+              </ul>
+          </div> #}
+
+          {# <div class="btn-toggle">
+             <a href="">
+                <button class="btn-login">Se connecter</button>
+            </a>
+             <a href="">
+                <button class="btn-login">S'inscrire</button>
+            </a>
+          </div> #}
+
+            <div class="btn-toggle">
+                <button class="btn-login">Se connecter</button>
+                <button class="btn-login">S'inscrire</button>
+                <div class="burger" id="burger">
+                  <span></span>
+                  <span></span>
+                  <span></span>                  
+                </div>
+
+            </div>
+     
+    </nav>
+
+  <div class="mobile-menu" id="mobile-menu">
+  <a href="">Accueil</a>
+  <a href="">Services</a>
+  <a href="">À propos</a>
+  <a href="">Contact</a>
+  <a href="">
+    <button>Se connecter</button>
+  </a> 
+
+
+</header>
