@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Admin - Mon Site{% endblock %}</title>
+    <link rel="icon" type="image/x-icon" href="{{ asset('images/favicon.ico') }}">
+
+    {% block stylesheets %}      
+    {% endblock %}
+
+    {% block javascripts %}
+        {% block importmap %}{{ importmap('app') }}{% endblock %}
+
+    {% endblock %}
+</head>
+
+
+<body>
+
+    <main>
+        {% block body %}
+        <h1>Bienvenue dans l'interface d'administration</h1>
+        <p>Utilisez le menu pour naviguer dans les différentes sections.</p>
+        {% endblock %}
+    </main>
+
+</body>
+</html>

@@ -1,61 +1,70 @@
 <header>
-       
-    <nav class="navbar">
 
-        
-        {# <div class="container-fluid"> #}
+	<nav
+		class="navbar">
 
-          <div class="logo" >
-            <img src="{{asset('images/logo_niche.webp')}}" class="navbar-logo" alt="logo du site" width="200" height="150">
-          </div>
+		{# <div class="container-fluid"> #}
 
-          <div class="navlinks">
-              <ul class="nav-items">
-
-                <li><a href="{{ path('app_home') }}">Accueil</a></li>
-                 <li><a href="">Horaire</a></li>
-                <li><a href="">Service</a></li>
-                <li><a href="">Contact</a></li>  
-              </ul>
-          </div>
-
-          {# <div class="auth-links">
-              <ul class="auth-links">
-                  <li><a href="">Se connecter</a></li>
-                  <li><a href="">S'inscrire</a></li>
-              </ul>
-          </div> #}
-
-          {# <div class="btn-toggle">
-             <a href="">
-                <button class="btn-login">Se connecter</button>
-            </a>
-             <a href="">
-                <button class="btn-login">S'inscrire</button>
-            </a>
-          </div> #}
-
-            <div class="btn-toggle">
-                <button class="btn-login">Se connecter</button>
-                <button class="btn-login">S'inscrire</button>
-                <div class="burger" id="burger">
-                  <span></span>
-                  <span></span>
-                  <span></span>                  
-                </div>
-
-            </div>
-     
-    </nav>
-
-  <div class="mobile-menu" id="mobile-menu">
-  <a href="">Accueil</a>
-  <a href="">Services</a>
-  <a href="">À propos</a>
-  <a href="">Contact</a>
-  <a href="">
-    <button>Se connecter</button>
-  </a> 
+		<div class="logo">
+			<img src="{{asset('images/logo_niche.webp')}}" class="navbar-logo" alt="logo du site" width="200" height="150">
+		</div>
 
 
-</header>
+		{% include 'components/nav.html.twig' %}
+
+	  {# </div> #}
+
+	  {# pour se connecter/déconnecter #}
+
+	  <div class="btn-toggle">
+		  {% if app.user %}
+			<span class="hello">Bonjour,
+				{{ app.user.firstName }}</span>
+
+			<a class="btn-login" href="{{path('app_logout')}}">Se déconnecter</a>
+
+
+			{# pour admin #}
+
+			{# <a class="btn-login" href="{{ path('app_admin') }}">Admin</a> #}
+
+
+		{% else %}
+			<a class="btn-login" href="{{ path('app_login') }}">Se connecter</a>
+
+			<a href="{{ path('app_register') }}" class="btn-login">S'inscrire</a>
+		{% endif %}
+	  </div>
+
+	  {# menu burger #}
+
+
+	  <div class="burger" id="burger">
+		  <span></span>
+		  <span></span>
+		  <span></span>
+	  </div>
+
+  </div>  
+</nav>
+
+{# menu mobile #}
+
+<div class="mobile-menu" id="mobile-menu">
+
+  {% include 'components/nav.html.twig' %}
+
+  {% if app.user %}
+	  <a class="btn-login" href="{{path('app_logout')}}">
+		  <button>Se déconnecter</button>
+	  </a>
+
+  {% else %}
+
+	<a class="btn-login" href="{{ path('app_login') }}">
+		<button>Se connecter</button>
+	</a>
+	<a class="btn-login" href="{{ path('app_register') }}">
+		<button>S'inscrire</button>
+	</a>
+{% endif %}</div></header>

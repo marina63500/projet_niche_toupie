@@ -1,41 +1,73 @@
-*{
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
+.container {
+  max-width: 800px;
+  padding-inline: 1em;
+  margin-inline: auto;
 }
 
 .slider {
   position: relative;
-  height: 40vh;
-  width: 50vw;
+  height: 65vh;
+  max-width: 600px; 
   overflow: hidden; /* masque ce qui dépasse */
   margin: 20px auto;
-
 }
 
-.slider img {
+.slides {
+  display: flex;
+  height: 100%;
+  /* transition: transform 1s ease-in-out; */
+}
+
+
+.slide {
+  flex-shrink: 0; /* pour empêcher le rétrécissement */
+  width: 100%;
+  transition: transform 0.5s ease-in-out;
+  display: none; /* cacher toutes les images */
+}
+
+.slide.active {
+  display: block; /* afficher seulement l'image active */
+}
+
+img {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  position: absolute; /* pour placer les img les unes sur les autres */
-  top: 0;
-  left: 0;
 }
 
-.next, .prev{
-  color: #F7F6BB;
-  font-size: 3rem;
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%); /* pour centrer verticalement */
-  background-color: rgba(135, 169, 34, 0.6); /* très transparent */
-  border-radius: 50%;
+.next,
+.prev {
+    height: 2em;
+    width: 2em; 
+    line-height: 1; /*pour dire que c'est un carré */
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #f7f6bb;
+    position: absolute;
+    top: 50%; 
+    transform: translateY(-50%); /* centre parfaitement avec le top */
+    /* background-color: rgba(135, 169, 34, 0.6);  */
+    background-color: rgba(50, 50, 50, 0.6); 
+    border-radius: 50%; 
+    opacity: 0; /*  boutons invisibles */
+    transition: opacity 0.3s ease; 
+    border: none;
+}
+
+ .slider:hover .next,
+.slider:hover .prev {
+    opacity: 1;
 }
 
 .next {
-  right: 0.5rem;
+    right: 0.5rem;
 }
 
 .prev {
-  left: 0.5rem;
+    left: 0.5rem;
 }
+
+
+
+

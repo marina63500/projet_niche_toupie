@@ -1,49 +1,44 @@
 <!DOCTYPE html>
-<html lang="fr" >
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <meta name="description" content="La Niche à Toupie" >
+<html lang="fr">
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<meta name="description" content="La Niche à Toupie">
 
-        <title>
-        {% block title %}La Niche à Toupie{% endblock %}
-        </title>
+		<title>
+			{% block title %}La Niche à Toupie
+			{% endblock %}
+		</title>
 
-       
-        <link rel="icon" href="{{ asset('images/favicon.svg') }}" type="image/svg+xml">
-        {# <link rel="alternate icon" href="{{ asset('images/favicon.png') }}" type="image/png"> #}
 
-        
+		<link rel="icon" href="{{ asset('images/favicon.svg') }}" type="image/svg+xml"> {% block stylesheets %}{% endblock %}
 
-        {% block stylesheets %} 
-       
-           
-        {% endblock %}    
+		{% block javascripts %}
+			{% block importmap %}
+				{{ importmap('app') }}
+			{% endblock %}
+		{% endblock %}
 
-       {% block javascripts %}
-            {% block importmap %}{{ importmap('app') }}{% endblock %}
-        {% endblock %}
 
-       
-    </head>
-    
-    <body>
+	</head>
 
-       <header>            
-        {% block header %}
-            {% include "components/header.html.twig" %}
-        {% endblock %}
-        </header>
+	<body>
 
-        <main>
-            {% block body %}{% endblock %}
-        </main>
+		<header>
+			{% block header %}
+				{% include "components/header.html.twig" %}
+			{% endblock %}
+		</header>
 
-        <footer>
-        {% block footer %}
-            {% include "components/footer.html.twig" %}
-        {% endblock %}
-        </footer> 
-            
-    </body>
+		<main>
+			{% block body %}{% endblock %}
+		</main>
+
+		<footer>
+			{% block footer %}
+				{% include "components/footer.html.twig" %}
+			{% endblock %}
+		</footer>
+
+	</body>
 </html>

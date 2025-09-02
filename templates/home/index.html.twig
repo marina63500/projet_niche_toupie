@@ -1,36 +1,94 @@
 {% extends 'base.html.twig' %}
 
 {% block stylesheets %}
-    {# {{ parent() }} #}
-    <link rel="stylesheet" href="{{ asset('styles/slider.css') }}">
+	<link rel="stylesheet" href="{{ asset('styles/slider.css') }}">
 {% endblock %}
 
+{% block javascripts %}
+	{% block importmap %}
+		{{ importmap('app') }}
+	{% endblock %}
+
+	<script src="{{ asset('js/slider.js') }}"></script>
+{% endblock %}
 
 
 {% block body %}
-   <h1>Bienvenue à La Niche à Toupie</h1>
+	<h1>
+		Bienvenue à La Niche à Toupie
+	</h1>
 
-<div class="slider">
-   <div class="slide active">
-       <img src="{{ asset('images/portrait-chiens.webp') }}" alt="portrait des chiens de la niche à toupie" width="600px" height="400px">
-   </div>
+	<section class="container">
+		<div class="slider">
+			<div class="slides">
+				<div class="slide active">
+					<img src="{{ asset('images/portrait-chiens.webp') }}" alt="portrait des chiens de la niche à toupie">
+				</div>
 
-   <div class="slide">
-       <img src="{{ asset('images/chien_assis.webp') }}" alt="portrait d'un chien assis" width="600px" height="400px">
-   </div>
+				<div class="slide">
+					<img src="{{ asset('images/chien_assis.webp') }}" alt="portrait d'un chien assis">
+				</div>
 
-   <div class="slide">
-       <img src="{{ asset('images/malinois.webp') }}" alt="portrait d'un malinois couché" width="600px" height="400px">
-   </div>
+				<div class="slide">
+					<img src="{{ asset('images/malinois.webp') }}" alt="portrait d'un malinois couché">
+				</div>
+			</div>
 
-    
-   <button class="prev"> <  </button>
-    
+			<button class="prev" id="prevBtn">
+				&lt;
+			</button>
 
-   <button class="next"> > </button>
-    
+			<button class="next" id="nextBtn">
+				&gt;
+			</button>
+		</div>
+	</section>
 
-</div>
+	<section class="container" id="about">
+
+		<h2>À propos de La Niche à Toupie</h2>
+		<div class="box">
+			<p>La Niche à Toupie est une pension pour chiens situé à Auzon(43). Je m'engage à offrir un environnement sûr et aimant pour tous les chiens qui fréquentent mon établissement.</p>
+			<p>Je propose des services de garde, de promenade et d'entraînement pour répondre aux besoins individuels de chaque chien. Mon objectif est de garantir le bien-être et le bonheur de chaque chien sous ma garde.</p>
+		</div>
+
+		<div class="infos">
+			<img src="{{ asset('images/mon_premier_chien.webp') }}" alt="portrait de Toupie, la première chienne de la propriétaire">
+
+			<div class="box2">
+				<h3>Education canine pour petits et grands</h3>
+				<p>Passionnée par les chiens,j'ai choisi de devenir éducatrice comportementaliste canin(l'un ne va pas sans l'autre) afin de vous aider au mieux à comprendre et bien vivre avec votre ou vos chiens
+				</p>
+
+				<p>Vous souhaitez apprendre les bases d'éducation à votre chiot ou régler un problème de comportement devenu difficile à gérer au quotidien, je suis à votre disposition.
+																																																																					Mes méthodes d'apprentissage s'adaptent au tempérament de votre toutou afin de le faire évoluer sans stress ( pour lui et pour vous).</p>
+
+				<button class="btn-contact">Contact</button>
+			</div>
+
+			{# <button><a href="{{ path('contact') }}">Contact</a></button> #}
+
+		</div>
+	</section>
+
+	<hr>
+
+	<section class="container" id="horaires">
+		<h2>Les horaires</h2>
+		<div class=" box box-horaires">
+			<h4>Nos portes sont toujours ouvertes</h4>
+			<p>Disponible
+				<strong>7 jours / 7</strong>
+			</p>
+			<div class="box3">
+				<div class="paragraph-horaires">
+					<p>Du lundi au samedi de 9h00 à 19h30</p>
+					<p>Le dimanche de 9h00 à 13h00</p>
+				</div>
+				<button class="btn-contact">Contact</button>
+			</div>
+			<p>Je suis également joignable par téléphone ou par email.</p>
+		</div>
+	</section>
 
 {% endblock %}
-
