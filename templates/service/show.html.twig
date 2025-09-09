@@ -1,0 +1,142 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Nos Services
+{% endblock %}
+
+{% block stylesheets %}
+	<link rel="stylesheet" href="{{ asset('styles/service_show.css') }}">
+{% endblock %}
+
+{% block javascripts %}
+	{% block importmap %}
+		{{ importmap('app') }}
+	{% endblock %}
+{% endblock %}
+
+{% block body %}
+	<div class="container" id="show_container">
+
+		<div class="boxbanner_image">
+
+			<div class="banner_image"><img src="{{ asset(service.ImageHeader) }}" alt="banniere du service {{ service.title }}"></div>
+		</div>
+	</div>
+
+	<h1>{{ service.title }}</h1>
+
+
+	<div class="show_image">
+
+		<img src="{{ asset(service.image) }}" alt="{{ service.title }}">
+	</div>
+
+	<div class="container">
+		<div class="show_description">
+			<h2>Description</h2>
+			<p>{{ service.description }}</p>
+		</div>
+	</div>
+
+	<div class="show_price">
+		<h2>Prix</h2>
+		<p class="price">{{ service.price }}
+			€ par chien</p>
+
+
+		<div class="show_btn">
+			<a href="{{ path('app_service') }}" class="btn-contact">Réserver</a>
+		</div>
+
+	</div>
+
+	<div class="show-infos">
+		<h2>Informations complémentaires</h2>
+		{# <p id="show-paragraph">{{ service.paragraph }}</p> #}
+
+		{# boucle sur les lignes du paragraphe et transformation en liste #}
+		<div class="container" id="show-paragraph">
+			{% set lines = service.paragraph|split('\n') %}
+			<ul>
+				{% for line in lines %}
+					{% if line starts with '-' %}
+						<li class="show-li">{{ line|trim('-') }}</li>
+					{% elseif line is not empty %}
+						<p>{{ line }}</p>
+					{% endif %}
+				{% endfor %}
+			</ul>
+		</div>
+
+	</div>
+
+	<div class="show_btn">
+		<a href="{{ path('app_service') }}" class="btn-contact">Réserver</a>
+	</div>
+
+
+
+
+{#  section commentaire #}
+
+	<h2>Laisser un commentaire</h2>
+
+		
+		<div class="comment-form ">
+			{% if app.user %}
+    			{{ form_start(form) }}
+
+					<div class="form-content">
+       		 	 		{{ form_row(form.content) }}        				
+					</div>
+					<div class="form-btn">
+						<button type="submit" class="btn btn-send mt-2 " id="send-button">Envoyer</button>
+					</div>
+
+    			{{ form_end(form) }}
+			
+			{% else %}
+
+    		<p class="form-connexion">
+        		<a href="{{ path('app_login') }}">Connectez-vous</a> pour laisser un commentaire.
+    		</p>
+			{% endif %}
+		</div>
+
+
+
+
+	{#  afficher les commentaires #}
+	<h2>Commentaires</h2>
+	<div class="comment-container">
+		{% for comment in service.comments| sort((a, b) => a.createdAt < b.createdAt ? 1 : -1) %}
+			{# sort filtre par date  car j ai deja tous dans service #}
+
+				
+				
+					<div class="comment"> 
+						<div class="comment-header">
+
+							<p>
+								<strong>Auteur : {{ comment.user.pseudo }}</strong>
+							</p>
+
+							<small>Posté le
+							{{ comment.createdAt|date('d/m/Y H:i') }}
+							</small>
+						</div>
+
+						<p>{{ comment.content }}</p>
+{% if app.user and app.user.id == comment.user.id %}
+						<div class="comment-actions">
+							<a href="{{ path('comment_delete', { id: comment.id }) }}" class="btn btn-danger btn-sm" onclick="return confirm('⚠️ Es-tu sûr de vouloir supprimer ce commentaire ?');">Supprimer</a>
+						</div>
+{% endif %}
+
+					</div>
+					{% else %}
+						<p>Aucun commentaire pour ce service.</p>
+				
+	
+		{% endfor %}
+	</div>
+{% endblock %}

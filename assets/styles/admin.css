@@ -1,0 +1,54 @@
+/* général */
+.admin-main {
+    background-color: #f7f7f7;
+    padding: 20px;    
+    font-family: 'nunito', sans-serif;
+    margin-left: 200px;
+
+}
+
+.admin-main h1 {
+    color: #114232;
+    font-family: "fredoka", sans-serif;
+}
+
+/* tableau */
+.admin-main table {
+    width: 100%;
+    border-collapse: collapse;  /*fusionne les bordures des cellules td et th avec la table sans cela chaque cellule aurait une bordure =>double bordure */
+    margin-top: 20px;
+    border:2px solid #114232;
+}
+
+.admin-main th,
+.admin-main td {
+    padding: 12px 15px;
+    border: 2px solid #114232;
+    text-align: center;
+}
+
+
+.admin-main th {
+    background-color: #114232;
+    color: #f6f7bb;
+    text-align: center;
+    font-weight: bold;
+    font-size: 1.2rem; 
+}
+
+.admin-main td {
+    text-align: center;
+    font-size: 1rem;
+}
+
+/* .admin-main tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+
+.admin-main tr:hover {
+    background-color: #e0e0e0;
+}
+.admin-main a {
+    color: #114232;
+    text-decoration: none;
+} */

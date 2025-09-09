@@ -1,3 +1,8 @@
+
+/* polices google fonts */
+@import url('https://fonts.googleapis.com/css2?family=Fredoka:wght@300..700&family=Nunito:ital,wght@0,200..1000;1,200..1000&family=Red+Hat+Display:ital,wght@0,300..900;1,300..900&display=swap');
+
+
 /* css général */
 * {
     box-sizing: border-box;
@@ -9,7 +14,7 @@ body {
     display: flex;
     flex-direction: column;
     min-height: 100vh;
-    font-family: Georgia, sans-serif, Verdana;
+    font-family: "Fredoka", sans-serif, "Nunito", sans-serif;
     background-color: #f7f7f7;
 }
 
@@ -19,24 +24,26 @@ main {
 
 h1 {
     text-align: center;
-    font-family: "Georgia", sans-serif;
-    margin: 2rem;
+    font-family: "Fredoka", sans-serif;
+    margin: 3rem;
     color: #114232;
     font-weight: bold;
 }
 
 h2,
 h3 {
-    font-family: "Georgia", sans-serif;
-    margin-bottom: 1rem;
+    font-family: "Fredoka", sans-serif;
+    margin-bottom: 3rem;
+    margin-top: 3rem;
     color: #114232;
     font-weight: bold;
     text-align: center;
 }
 
 p {
-    font-family: "Verdana", sans-serif;
-    line-height: 1.6;
+    font-family: "Nunito", sans-serif;
+    line-height: 1.7;
+    font-size: 1.2rem;
 }
 
 hr {
@@ -80,7 +87,7 @@ footer {
 
 .navbar .nav-items {
     display: flex;
-    gap: 1.5rem;
+    gap: 2rem;
     list-style: none;
     margin-bottom: 0;
 }
@@ -90,6 +97,8 @@ footer {
     text-decoration: none;
     font-size: 1rem;
     transition: color 0.2s ease;
+    font-weight: bold;
+    font-family: "Nunito", sans-serif;
 }
 
 .navbar .nav-items a:hover {
@@ -114,6 +123,7 @@ span.hello {
     cursor: pointer;
     transition: background 0.3s ease;
     text-decoration: none;
+    font-family: "Nunito", sans-serif;
 }
 
 .navbar .btn-login:hover {
@@ -158,13 +168,14 @@ footer {
     color: #f7f6bb;
     width: 100%;
     box-sizing: border-box; /* évite les débordements */
+    margin-top: 40px;
 }
 
 .footer-container {
     display: flex;
     flex-direction: column;
     width: 100%;
-    max-width: 1200px;
+    max-width: 2000px;
     margin: 0 auto;
     gap: 30px;
     padding: 0 1rem;
@@ -196,6 +207,7 @@ footer {
     flex: 1;
     min-width: 200px;
     text-align: right;
+    
 }
 
 .footer-links ul {
@@ -203,11 +215,14 @@ footer {
     margin: 0;
     padding: 0;
     color: #114232;
+  
 }
 
 .footer-links li a {
     margin: 0.4rem 0;
     color: #114232;
+    font-size: 1.2rem;
+    
 }
 
 .footer-links li a:hover {
@@ -265,28 +280,38 @@ footer a:hover {
 /* css page d'accueil */
 #about {
     max-width: 1300px;
-    margin: 10px auto;
+    margin: 40px auto;
     padding: 0 1rem;
 }
+
+
 
 .box {
     background-color: rgba(135, 169, 34, 0.2);
     padding: 1.5rem;
     border-radius: 10px;
-    padding: 10px;
-    margin: 0 auto;
-    max-width: 90%;
-    line-height: 1.5;
+    /* padding: 10px; */
+    margin: 40px auto;
+    max-width: 100%;
+    line-height: 1.6;
     justify-content: center;
+}
+
+.box p ,.box2 p{
+    margin: 1.5rem;
+    font-family: "Nunito", sans-serif;
+   
+
 }
 
 .infos {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    gap: 2rem;
+    gap: 3rem;
     flex-wrap: wrap;
-    margin-top: 2rem;
+    margin-top: 4rem;
+    
 }
 
 .infos img {
@@ -295,8 +320,11 @@ footer a:hover {
     margin: 10px auto;
     height: auto;
     border-radius: 10px;
-    box-shadow: 4px 4px 6px rgba(17, 66, 50, 0.6); /* horizontal/vertical/ grandeurflou/opacity couleur */
+    box-shadow: 5px 5px 8px rgba(17, 66, 50, 0.6); /* horizontal/vertical/ grandeurflou/opacity couleur */
     flex-shrink: 0; /* empêche l’image de se réduire trop */
+    
+
+    
 }
 
 .box2 {
@@ -306,25 +334,32 @@ footer a:hover {
     padding: 10px;
     width: 500px;
     max-width: 90%;
-    margin: 0 auto;
+    margin: 20px auto;
+    margin-bottom: 40px;
     line-height: 1.5;
     flex: 1; /* prend une part egale de l'espace dispo */
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
+.box2 p {
+    margin: 1rem 1.2rem;
+
+   
+}
+
 .btn-contact {
     background-color: #87a922;
-    padding: 1rem 1rem;
+    padding: 0.8rem 0.8rem;
     border: none;
     border-radius: 20px;
     color: #114232;
-    font-size: 1rem;
-    cursor: pointer;
+    font-size: 1rem;    
     transition: background 0.4s ease-in-out;
     font-weight: bold;
-    margin: 0.5rem auto;
+    margin: 1rem 1.2rem;
     text-align: center;
-    font-family: verdana;
+    font-family: "Nunito", sans-serif;
+    text-decoration: none;    
 }
 
 .btn-contact:hover {
@@ -332,19 +367,49 @@ footer a:hover {
     color: #f7f6bb;
 }
 
+.btn-about {
+    display: flex;
+    justify-content: center;
+    margin: 30px 0;
+}
+
 h4 {
     text-align: center;
     font-weight: bold;
     margin: 1rem 0;
     color: #114232;
+    font-family: "Fredoka", sans-serif;
 }
+
+
+/* section horaires */
 #horaires {
-    margin: 20px auto;
+    margin: 40px auto;
+}
+
+  
+.paragraph-horaires {
+    text-align: left;
+    margin: 30px 20px;
+    font-family: "Nunito", sans-serif;
+    font-size: 1.2rem;
+}
+
+.btn-horaire {
+    text-align: center;
+    /* margin: 30px 20px; */
+    font-family: "Nunito", sans-serif;
+    font-size: 1.2rem;
+    width: 70%;
+    margin: auto auto;
+
 }
 
 .box3 {
     display: flex;
     margin-bottom: 1rem;
+    width: 100%;
+    
 }
 
 .box3 p {
@@ -352,13 +417,32 @@ h4 {
     text-align: left;
 }
 
-/* css pour formulaire d'inscription */
-/* .page_inscription { 
-  background-image: url("{{ assets('images/braque_de_weimar_fond_formulaire.webp') }}");
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;  
-} */
+/* messages flash */
+.flash-success,
+.flash-danger,
+.flash-info {
+    padding: 12px 20px;
+    margin: 15px auto;
+    border-radius: 8px;
+    font-weight: bold;
+    color: #fff;
+    max-width: 400px;
+}
+
+.flash-success {
+    background-color: #d4edda;
+    color: #155724;
+}
+
+.flash-error {
+    background-color: #f8d7da;
+    color: #721c24;
+}
+
+.flash-info {
+    background-color: #cce5ff;
+    color: #004085;
+}
 
 /* Responsive */
 @media (max-width: 768px) {
@@ -427,6 +511,19 @@ h4 {
     }
 }
 
+@media (max-width: 375px) {
+    .navbar {
+        padding: 1rem;
+    }
+    .logo {
+        width: 80px;
+    }
+    .burger span {
+        width: 20px;
+        height: 2px;
+    }
+}
+
 /* responsive accueil */
 @media (max-width: 768px) {
     .infos {
@@ -437,6 +534,11 @@ h4 {
 
     .box2 {
         width: 100%;
+    }
+
+    .box2 p {
+        margin: 1rem 0.5rem;
+        text-align: left;
     }
 
     .box3 {

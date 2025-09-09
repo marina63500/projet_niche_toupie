@@ -1,0 +1,108 @@
+
+.services-section {
+    padding: 20px;
+}
+
+.services-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+    padding: 10px;    
+    max-width: 90%;
+    margin: auto;
+    margin-bottom: 20px;
+}
+
+.service-card {
+    border: 3px solid #114232;
+    border-radius: 20px;
+    padding: 20px;
+    background-color: rgba(252, 220, 42, 0.2);
+    max-width: 300px;
+    height: auto;
+    box-shadow: 10px 10px 30px rgba(17, 66, 50, 0.55);
+    box-sizing: border-box;
+}
+
+.service-card-title {
+    font-size: 1.25rem;  
+   
+}
+
+.service-card-title h3 {
+    margin: 1rem;
+}
+
+.service-card img {
+    width: 100%;   
+    object-fit: contain;
+    border-radius: 10px;
+    margin: 10px auto;
+}
+
+.service-card-body {
+    padding: 10px 0;
+}
+
+.btn-card {
+    display: block;
+    margin: 0.5rem auto;
+    width: fit-content;  /* largeur s'adapte au container */
+    background-color: #87a922;
+    padding: 0.5rem 1rem;    
+    color: #114232;   
+    border: none;
+    border-radius: 5px;
+    text-decoration: none;
+    transition: background-color 0.2s, transform 0.2s;
+    cursor: pointer;
+    font-weight: bold;
+ }
+
+.btn-card:hover {   
+    transform: scale(1.05);
+    background-color: #114232;
+    color: #f7f6bb;
+}
+
+.description-card{
+    font-size: 0.9rem;
+    text-align: justify;   
+    
+}
+
+.price-card{
+    font-size: 0.9rem;
+    margin: 10px 0;
+    text-align: center;    
+}
+
+.section-btn{
+    text-align: center;
+    margin: 10px;
+}
+
+/* responsive */
+
+@media (max-width: 768px) {
+    .services-container {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .service-card {
+        width: 90%;
+        max-width: 300px;
+
+    }
+
+    .description-card{
+    font-size: 0.7rem;
+      
+    
+}
+}
+
+
+

@@ -57,16 +57,16 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     private Collection $comments;
 
     /**
-     * @var Collection<int, Service>
+     * @var Collection<int, Dog>
      */
-    #[ORM\ManyToMany(targetEntity: Service::class, inversedBy: 'users')]
-    private Collection $services;
+    #[ORM\OneToMany(targetEntity: Dog::class, mappedBy: 'user')]
+    private Collection $dogs;
 
     public function __construct()
     {
         $this->reservations = new ArrayCollection();
         $this->comments = new ArrayCollection();
-        $this->services = new ArrayCollection();
+        $this->dogs = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -247,26 +247,34 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     }
 
     /**
-     * @return Collection<int, Service>
+     * @return Collection<int, Dog>
      */
-    public function getServices(): Collection
+    public function getDogs(): Collection
     {
-        return $this->services;
+        return $this->dogs;
     }
 
-    public function addService(Service $service): static
+    public function addDog(Dog $dog): static
     {
-        if (!$this->services->contains($service)) {
-            $this->services->add($service);
+        if (!$this->dogs->contains($dog)) {
+            $this->dogs->add($dog);
+            $dog->setUser($this);
         }
 
         return $this;
     }
 
-    public function removeService(Service $service): static
+    public function removeDog(Dog $dog): static
     {
-        $this->services->removeElement($service);
+        if ($this->dogs->removeElement($dog)) {
+            // set the owning side to null (unless already changed)
+            if ($dog->getUser() === $this) {
+                $dog->setUser(null);
+            }
+        }
 
         return $this;
     }
+
+
 }

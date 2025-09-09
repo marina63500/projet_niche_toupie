@@ -1,0 +1,40 @@
+{% extends 'baseAdmin.html.twig' %}
+
+{% block title %}Liste des services{% endblock %}
+
+{% block body %}
+    <h1>Liste des services</h1>
+    <table>
+        <thead>
+            <tr>                
+                <th>Titre</th>
+                <th>Nombre de réservation</th>
+                <th>Prix</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+
+        <a href="{{path('admin_service_add')}}" class="btn btn-success">ajouter</a>
+        
+        <tbody>
+
+            {% for service in services %}
+                <tr>
+                    
+                    <td>{{ service.title }}</td>
+                    {# <td>{{ service.reservations|length }}</td> #}
+                    <td>{{ service.price }} €</td>
+                    
+
+                    <td>
+                    {# case action avec boutons #}
+                        <a href="{{ path('admin_service_show', { id: service.id }) }}" class="btn btn-info">Voir</a>
+                        <a href="{{ path('admin_service_edit', { id: service.id }) }}" class="btn btn-warning">Modifier</a>
+                        <a href="{{ path('admin_service_delete', { id: service.id }) }}" class="btn btn-danger">Supprimer</a>
+                    </td> 
+                </tr>
+            {% endfor %}
+         
+        </tbody>
+    </table>
+{% endblock %}

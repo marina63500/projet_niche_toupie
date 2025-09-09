@@ -4,7 +4,11 @@ document.addEventListener('turbo:load', () => {
   const burger = document.getElementById('burger');
   const mobileMenu = document.getElementById('mobile-menu');
 
-  burger.addEventListener('click', () => {
+
+  if(burger !== null && mobileMenu !== null) {
+
+      burger.addEventListener('click', () => {
     mobileMenu.classList.toggle('show');
   });
+  }
 });

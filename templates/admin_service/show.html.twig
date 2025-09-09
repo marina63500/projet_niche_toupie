@@ -1,0 +1,35 @@
+{% extends 'baseAdmin.html.twig' %}
+
+
+{% block body %}
+
+    <div class="container">
+    
+        <h1>Détails du service</h1>
+
+        <table class="table">
+            <tbody>
+                <tr></tr>
+                <tr>
+                    <th>Titre</th>
+                    <td>{{ service.title }}</td>
+                </tr>
+                <tr>
+                    <th>Description</th>
+                    <td>{{ service.description }}</td>
+                </tr>
+                <tr>
+                    <th>Prix</th>
+                    <td>{{ service.price }} €</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <a href="{{ path('admin_service_index') }}" class="btn btn-primary">Retour à la liste</a>
+        <a href="{{ path('admin_service_edit', { id: service.id }) }}" class="btn btn-warning">Modifier</a>
+        <a href="{{ path('admin_service_delete', { id: service.id }) }}" class="btn btn-danger">Supprimer</a>
+    
+    
+    </div>
+
+{% endblock %}

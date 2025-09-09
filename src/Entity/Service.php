@@ -46,17 +46,10 @@ class Service
     #[ORM\OneToMany(targetEntity: Comment::class, mappedBy: 'service')]
     private Collection $comments;
 
-    /**
-     * @var Collection<int, User>
-     */
-    #[ORM\ManyToMany(targetEntity: User::class, mappedBy: 'services')]
-    private Collection $users;
-
     public function __construct()
     {
         $this->reservations = new ArrayCollection();
         $this->comments = new ArrayCollection();
-        $this->users = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -191,33 +184,6 @@ class Service
             if ($comment->getService() === $this) {
                 $comment->setService(null);
             }
-        }
-
-        return $this;
-    }
-
-    /**
-     * @return Collection<int, User>
-     */
-    public function getUsers(): Collection
-    {
-        return $this->users;
-    }
-
-    public function addUser(User $user): static
-    {
-        if (!$this->users->contains($user)) {
-            $this->users->add($user);
-            $user->addService($this);
-        }
-
-        return $this;
-    }
-
-    public function removeUser(User $user): static
-    {
-        if ($this->users->removeElement($user)) {
-            $user->removeService($this);
         }
 
         return $this;

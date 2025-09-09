@@ -24,6 +24,8 @@ class RegistrationFormType extends AbstractType
                 'label' => 'Email',
                 'attr' => [
                     'placeholder' => 'Entrez votre email',
+                    'style' => 'background-color: rgba(135, 169, 34, 0.2);
+                                border: 2px solid #114232;',
                 ],
             ])
             ->add('pseudo',TextType::class,[
@@ -31,6 +33,8 @@ class RegistrationFormType extends AbstractType
                 'label' => 'Pseudo',
                 'attr' => [
                     'placeholder' => 'Entrez votre pseudo',
+                     'style' => 'background-color: rgba(135, 169, 34, 0.2);
+                                border: 2px solid #114232;',
                 ],
             ])
             ->add('lastName',TextType::class,[
@@ -38,6 +42,8 @@ class RegistrationFormType extends AbstractType
                 'label' => 'Nom',
                 'attr' => [
                     'placeholder' => 'Entrez votre nom',
+                     'style' => 'background-color: rgba(135, 169, 34, 0.2);
+                                border: 2px solid #114232;',
                 ],
             ])
             ->add('firstName',TextType::class,[
@@ -45,15 +51,24 @@ class RegistrationFormType extends AbstractType
                 'label' => 'Prénom',
                 'attr' => [
                     'placeholder' => 'Entrez votre prénom',
+                    'style' => 'background-color: rgba(135, 169, 34, 0.2);
+                                border: 2px solid #114232;',
                 ],
             ])
             ->add('agreeTerms', CheckboxType::class, [
                 'mapped' => false,
+                'attr' => [
+                    'style' => 'background-color: rgba(135, 169, 34, 0.2);
+                                border: 2px solid #114232;', 
+                ],
                 'label' => 'Accepter les conditions',
+                 
                 'constraints' => [
                     new IsTrue([
                         'message' => 'Vous devez accepter nos conditions.',
+                        
                     ]),
+                    
                 ],
             ])
             // // modification du bouton d'inscription pour appliquer mon style ou direct dans button
@@ -64,8 +79,12 @@ class RegistrationFormType extends AbstractType
             ->add('plainPassword', PasswordType::class, [
                 // instead of being set onto the object directly,
                 // this is read and encoded in the controller
-                'mapped' => false,
-                'attr' => ['autocomplete' => 'new-password'],
+                'mapped' => false,               
+                'attr' => [
+                    'style' => 'background-color: rgba(135, 169, 34, 0.2);
+                                border: 2px solid #114232;',
+                    'autocomplete' => 'new-password',
+                ],
                 'constraints' => [
                     new NotBlank([
                         'message' => 'Please enter a password',

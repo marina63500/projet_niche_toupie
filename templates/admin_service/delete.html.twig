@@ -1,0 +1,22 @@
+{% extends 'baseAdmin.html.twig' %}
+
+{% block body %}
+    <h1>Supprimer un service</h1>
+
+    <div class="container mt-4">
+        <div class="row justify-content-center">
+            <div class="col-12 col-sm-10 col-md-8 col-lg-6 col-xl-5">
+                <div class="p-3">
+                    <p>Êtes-vous sûr de vouloir supprimer ce service ?</p>
+
+                    <div class="text-center mt-3">
+                        <form method="post" action="{{ path('admin_service_delete', { id: service.id }) }}">
+                            <button type="submit" class="btn btn-danger">Supprimer</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}

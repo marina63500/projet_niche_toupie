@@ -1,0 +1,242 @@
+ #show_container{  
+    width: 100%;   
+    max-width: 1440px; 
+    margin: 30px auto ;
+    padding: 0; 
+} 
+
+/* Banner image */
+/* .banner_image {
+    width: 100%;
+    height: 500px;
+    position: relative; */
+    /* overflow: hidden; */
+    /* background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center; */
+    
+/* }
+
+.banner_image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    display: block;
+} */
+
+.banner_image {
+    width: 100%;
+    height: 500px; /* hauteur fixe de la bannière */
+    overflow: hidden;
+    position: relative;
+}
+
+.banner_image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* rempli tout le bloc */
+    object-position: center; /* centré */
+    display: block;
+}
+
+
+
+/* Description */
+.show_description{
+    font-size: 1rem;
+    line-height: 1.6;
+    margin: 40px;
+}
+
+/* prix */
+.show_price{  
+    font-weight: bold;  
+    margin: 40px; 
+    background-color: rgba(255, 255, 0, 0.2); 
+    border-radius: 10px;
+    padding: 10px;   
+}
+
+.show_price h2{
+    text-align: center;    
+    margin-bottom: 30px;
+}
+
+.price{
+    font-size: 1.5em;
+    text-align: center;
+    margin-bottom: 30px;
+} 
+
+/* image service */
+.show_image {
+    /* width: 100%;
+    height: 300px;
+    overflow: hidden;
+    position: relative;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center; */
+
+    width: 100%;
+    max-width: 800px;
+    margin: 30px auto;
+    box-shadow: 6px 6px 12px rgba(17, 66, 50, 0.8);
+    
+}
+
+.show_image img {
+    /* width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    display: block; */
+    width: 100%;
+    height: auto;   
+    object-fit: contain;
+    object-position: center;
+    display: block;    
+}
+
+.show_btn{
+    text-align: center;
+    margin: 50px;
+}
+
+
+/* partie paragraphe complémentaire */
+.show-li{
+    margin-left: 20px;
+    list-style-type: disc;
+    margin-bottom: 10px;
+}  
+
+.show_paragraph{
+    margin: 40px;
+    font-size: 1rem;
+    line-height: 1.6;
+    text-align: justify; 
+
+}
+
+.show_paragraph ul{
+    margin-left: 20px;
+    margin-bottom: 20px;
+    padding-left: 0;
+}
+
+.show-infos h2{
+    margin: 50px;
+    text-align: center;
+    line-height: 1.6;
+    margin-top: 70px;
+  
+}
+
+
+/* les commentaires */
+
+/* css formulaire */
+.comment-form {
+  width: 90%;  
+  max-width: 800px;
+  margin: 20px auto;
+  padding: 15px;
+  background: rgba(135, 169, 34, 0.2);
+  border-radius: 12px;
+  box-shadow: 4px 4px 8px rgba(17, 66, 50, 0.8);
+  border: 1px solid #114232;
+}
+
+.form-btn {
+    margin-top: 10px;
+    text-align: center;
+}
+
+#send-button {
+    background-color: #114232; 
+    color:  #f7f6bb;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;    
+}
+
+
+/* css pour les commentaires */
+.comment-container {
+  width: 90%;
+  max-width: 800px;
+  margin: 20px auto;
+  padding: 15px;
+  background: rgba(135, 169, 34, 0.2);
+  border-radius: 12px;
+  box-shadow: 4px 4px 8px rgba(17, 66, 50, 0.8);
+  border:1px solid #114232;  
+}
+
+
+.comment {
+  padding: 12px 15px;
+  margin-bottom: 15px;
+  border-bottom: 1px solid #114232;
+}
+
+.comment-header{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+
+.comment p {
+  font-size: 1rem;
+}
+
+/*  la date */
+.comment small {
+  display: block;
+  font-size: 13px;
+  color: #666;
+}
+
+
+.comment:last-child {
+  border-bottom: none;
+}
+.comment-actions {
+    text-align: right;
+    margin-top: 10px;
+}
+
+/* message connexion si user non connecté */
+.form-connexion {   
+    text-align: center;
+    margin: 20px auto;
+    font-size: 1.1rem; 
+    background: rgba(255, 255, 0, 0.2); 
+    border-radius: 10px;
+    padding: 10px;  
+    width: 90%;
+    max-width: 800px;  
+    box-shadow: 4px 4px 8px rgba(17, 66, 50, 0.8);
+    border:1px solid #114232;  
+}
+
+
+/* Responsive  */
+@media (max-width: 768px) {
+    .banner_image {
+        height: 250px;        
+    }
+   
+}
+
+@media (max-width: 480px) {
+   .comment-header {
+        flex-direction: column;
+        align-items: flex-start;
+    } 
+}
+

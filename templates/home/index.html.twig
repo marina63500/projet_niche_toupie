@@ -8,7 +8,6 @@
 	{% block importmap %}
 		{{ importmap('app') }}
 	{% endblock %}
-
 	<script src="{{ asset('js/slider.js') }}"></script>
 {% endblock %}
 
@@ -61,9 +60,13 @@
 				</p>
 
 				<p>Vous souhaitez apprendre les bases d'éducation à votre chiot ou régler un problème de comportement devenu difficile à gérer au quotidien, je suis à votre disposition.
-																																																																					Mes méthodes d'apprentissage s'adaptent au tempérament de votre toutou afin de le faire évoluer sans stress ( pour lui et pour vous).</p>
+				Mes méthodes d'apprentissage s'adaptent au tempérament de votre toutou afin de le	faire évoluer sans stress ( pour lui et pour vous).
+				</p>
 
-				<button class="btn-contact">Contact</button>
+				<div class="btn-about">
+					<button class="btn-contact">Contact</button>
+				</div>
+
 			</div>
 
 			{# <button><a href="{{ path('contact') }}">Contact</a></button> #}
@@ -85,7 +88,10 @@
 					<p>Du lundi au samedi de 9h00 à 19h30</p>
 					<p>Le dimanche de 9h00 à 13h00</p>
 				</div>
-				<button class="btn-contact">Contact</button>
+				<div class="btn-horaire">
+					<button class="btn-contact">Contact</button>
+				</div>
+
 			</div>
 			<p>Je suis également joignable par téléphone ou par email.</p>
 		</div>

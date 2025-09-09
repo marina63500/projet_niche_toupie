@@ -7,7 +7,12 @@ const slides = document.querySelectorAll('.slide');
 const prev = document.getElementById('prevBtn');
 const next = document.getElementById('nextBtn');
 
-let index = 0;
+// if (slides.length > 0){
+
+if (slides.length === 0) {
+    return; // Sortir si aucun slide n'est trouvé
+}
+    let index = 0;
 
 
 function showSlide(i){
@@ -15,6 +20,7 @@ function showSlide(i){
     slides[i].classList.add('active');
 }
 
+// Gestion des clics sur les boutons
 next.addEventListener('click', () => {
     index++;
     if (index >= slides.length) {
@@ -31,6 +37,25 @@ prev.addEventListener('click', () => {
     showSlide(index);
 });
 
-// Initialisation
+
 showSlide(index);
-});
+
+
+// interval automatique
+setInterval(() => {
+    index++;
+    if (index >= slides.length) {
+        index = 0;
+    }
+    showSlide(index);
+}, 3000); 
+
+
+
+
+}
+
+
+
+// }
+);

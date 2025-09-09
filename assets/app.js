@@ -16,11 +16,12 @@ import 'bootstrap';
 //mon css
 import './styles/app.css';
 // import './styles/slider.css';
-
+// import './styles/services.css';
 
 // import mon js  
 import './js/navbarmobile.js';
 // import './js/slider.js';
+// import './js/sidebar.js';
 
 
 

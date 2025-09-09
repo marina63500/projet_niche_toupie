@@ -1,9 +1,7 @@
 <header>
 
-	<nav
-		class="navbar">
-
-		{# <div class="container-fluid"> #}
+	{# menu navigation #}
+	<nav class="navbar">
 
 		<div class="logo">
 			<img src="{{asset('images/logo_niche.webp')}}" class="navbar-logo" alt="logo du site" width="200" height="150">
@@ -12,59 +10,59 @@
 
 		{% include 'components/nav.html.twig' %}
 
-	  {# </div> #}
 
-	  {# pour se connecter/déconnecter #}
+		{# pour se connecter/déconnecter #}
 
-	  <div class="btn-toggle">
-		  {% if app.user %}
-			<span class="hello">Bonjour,
-				{{ app.user.firstName }}</span>
+		<div class="btn-toggle">
+			{% if app.user %}
+				{# user connected #}
+				<span class="hello">Bonjour,
+					{{ app.user.firstName }}</span>
 
-			<a class="btn-login" href="{{path('app_logout')}}">Se déconnecter</a>
-
-
-			{# pour admin #}
-
-			{# <a class="btn-login" href="{{ path('app_admin') }}">Admin</a> #}
+				<a class="btn-login" href="{{path('app_logout')}}">Se déconnecter</a>
 
 
-		{% else %}
-			<a class="btn-login" href="{{ path('app_login') }}">Se connecter</a>
+				{# pour admin #}
+				{% if is_granted("ROLE_ADMIN") %}
+					<a class="btn-login" href="{{ path('app_admin') }}">Admin</a>
+				{% endif %}
 
-			<a href="{{ path('app_register') }}" class="btn-login">S'inscrire</a>
-		{% endif %}
-	  </div>
+			{% else %}
+				<a class="btn-login" href="{{ path('app_login') }}">Se connecter</a>
 
-	  {# menu burger #}
+				<a href="{{ path('app_register') }}" class="btn-login">S'inscrire</a>
+			{% endif %}
+		</div>
 
+		{# menu burger #}
 
-	  <div class="burger" id="burger">
-		  <span></span>
-		  <span></span>
-		  <span></span>
-	  </div>
+		<div class="burger" id="burger">
+			<span></span>
+			<span></span>
+			<span></span>
+		</div>
 
-  </div>  
+	</div>
 </nav>
 
 {# menu mobile #}
 
 <div class="mobile-menu" id="mobile-menu">
 
-  {% include 'components/nav.html.twig' %}
+	{% include 'components/nav.html.twig' %}
 
-  {% if app.user %}
-	  <a class="btn-login" href="{{path('app_logout')}}">
-		  <button>Se déconnecter</button>
-	  </a>
+	{% if app.user %}
+		<a class="btn-login" href="{{path('app_logout')}}">
+			<button>Se déconnecter</button>
+		</a>
 
-  {% else %}
+	{% else %}
 
-	<a class="btn-login" href="{{ path('app_login') }}">
-		<button>Se connecter</button>
-	</a>
-	<a class="btn-login" href="{{ path('app_register') }}">
-		<button>S'inscrire</button>
-	</a>
-{% endif %}</div></header>
+		<a class="btn-login" href="{{ path('app_login') }}">
+			<button>Se connecter</button>
+		</a>
+		<a class="btn-login" href="{{ path('app_register') }}">
+			<button>S'inscrire</button>
+		</a>
+	{% endif %}
+</div></header>

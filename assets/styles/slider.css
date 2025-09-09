@@ -9,7 +9,7 @@
   height: 65vh;
   max-width: 600px; 
   overflow: hidden; /* masque ce qui dépasse */
-  margin: 20px auto;
+  margin: 40px auto;
 }
 
 .slides {

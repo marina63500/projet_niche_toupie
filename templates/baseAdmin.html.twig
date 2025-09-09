@@ -1,29 +1,69 @@
 <!DOCTYPE html>
 <html lang="fr">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{% block title %}Admin - Mon Site{% endblock %}</title>
-    <link rel="icon" type="image/x-icon" href="{{ asset('images/favicon.ico') }}">
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<meta name="description" content="La Niche à Toupie">
 
-    {% block stylesheets %}      
-    {% endblock %}
-
-    {% block javascripts %}
-        {% block importmap %}{{ importmap('app') }}{% endblock %}
-
-    {% endblock %}
-</head>
+		<title>
+			{% block title %}La Niche à Toupie
+			{% endblock %}
+		</title>
 
 
-<body>
+		<link rel="icon" href="{{ asset('images/favicon.svg') }}" type="image/svg+xml">
 
-    <main>
-        {% block body %}
-        <h1>Bienvenue dans l'interface d'administration</h1>
-        <p>Utilisez le menu pour naviguer dans les différentes sections.</p>
-        {% endblock %}
-    </main>
 
-</body>
+		{% block stylesheets %}
+			<link rel="stylesheet" href="{{ asset('styles/sidebar.css') }}">
+			<link rel="stylesheet" href="{{ asset('styles/admin.css') }}">
+		{% endblock %}
+
+		{% block javascripts %}
+			{% block importmap %}
+				{{ importmap('app') }}
+			{% endblock %}
+			<script src="{{ asset('js/sidebar.js') }}"></script>
+		{% endblock %}
+
+	</head>
+
+
+	<body>
+		<button class="sidebar-btn" id="sidebarBtn">☰</button>
+
+
+		<nav class="sidebar" id="sidebar">
+			<h2>Menu</h2>
+			<a href="{{ path('app_admin') }}">Dashboard</a>
+			<a href="#">Utilisateurs</a>
+			<a href="{{ path('admin_service_index') }}">Services</a>
+			<a href="#">Réservations</a>
+			<a href="{{ path('index_admin_comment') }}">Commentaires</a>
+			<a href="{{ path('app_logout') }}">Déconnexion</a>
+			<a href="{{ path('app_home') }}">Retour</a>
+		</nav>
+
+		<div
+			class="content" id="content">{# <h1>Tableau de bord</h1>
+							<p>Bienvenue dans ton espace admin</p> #}
+		</div>
+
+	
+
+		<main class="admin-main">
+		{# pour afficher les messages flash #}
+			{% for label, messages in app.flashes %}
+					{% for message in messages %}
+						<div class="flash-{{ label }}">
+							{{ message }}
+						</div>
+					{% endfor %}
+				{% endfor %}
+			{% block body %}
+				
+			{% endblock %}
+		</main>
+
+	</body>
 </html>

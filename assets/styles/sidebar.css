@@ -1,0 +1,82 @@
+ body {
+      margin: 0;
+      font-family: 'Nunito', sans-serif;
+      background: #f7f7f7;
+    }
+   
+    .sidebar {
+      position: fixed;
+      top: 0;
+      left: -200px; /* cachée par défaut en mobile */
+      width: 200px;
+      height: 100%;
+      background: #114232;
+      /* color: #f7f6bb; */
+      padding: 20px;
+      transition: left 0.3s ease;
+    }
+
+    .sidebar h2 {
+      font-size: 1.2rem;
+      margin-top: 0;
+      margin-bottom: 1rem;
+      color:#f7f6bb
+    }
+
+    .sidebar a {
+      display: block;
+      color: #f7f6bb;
+      padding: 10px;
+      text-decoration: none;
+      border-radius: 5px;
+      transition: background 0.2s;
+      font-family: verdana,sans-serif;
+    }
+
+    .sidebar a:hover {
+      background: #87a922;
+    }
+
+    
+    .sidebar-btn {
+      position: fixed;
+      top: 15px;
+      left: 15px;
+      background: #87a922;
+      color: #114232;
+      padding: 10px 15px;
+      border-radius: 5px;
+      cursor: pointer;
+      border: none;
+      z-index: 10;  /* la sidebar passe au-dessus du contenu */
+    }
+
+   
+    .content {
+      padding: 20px;
+      transition: margin-left 0.3s ease;
+    }
+
+    /* class injecté par JS */
+    .sidebar.active {
+      left: 0;
+    }
+
+    .content.shift {
+      margin-left: 200px; /* pour décaler vers la droite le content */
+    }
+
+   /* responsive */
+    @media (min-width: 768px) {
+      .sidebar-btn {
+        display: none;
+      }
+
+      .sidebar {
+        left: 0;
+      }
+
+      .content {
+        margin-left: 200px;
+      }
+    }
