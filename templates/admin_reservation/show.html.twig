@@ -1,0 +1,52 @@
+{% extends 'baseAdmin.html.twig' %}
+
+{% block body %}
+    <h1>Détails de la réservation</h1>
+
+    <table>
+        <tbody>
+            <tr>
+                <th>Nom du client</th>
+                <td>{{ reservation.user.firstName }} {{ reservation.user.lastName }}</td>
+            </tr>
+            <tr>
+                <th>Service réservé</th>
+                <td>{{ reservation.service.title }}</td>
+            </tr>
+            <tr>
+                <th>Date réservation</th>
+                <td>{{ reservation.reservationDate|date('d/m/Y H:i') }}</td>
+            </tr>
+            <tr>
+                <th>Statut</th>
+                <td>
+                    {% if reservation.status == '300' %}
+                        <span class="badge bg-danger">Annulée</span>
+                    {% elseif reservation.status == '200' %}
+                        <span class="badge bg-success">Acceptée</span>
+                    {% elseif reservation.status == '100' %}
+                        <span class="badge bg-warning">En attente</span>
+                    {% else %}
+                        {{ reservation.status }}
+                    {% endif %}
+                </td>
+            </tr>
+            <tr>
+                <th>le chien concerné</th>
+                <td>{{ reservation.dog.name }}</td>
+            </tr>
+            <tr>
+                <th>Race du chien</th>
+                <td>{{ reservation.dog.race }}</td>
+            </tr>
+           
+          
+        </tbody>
+    </table>
+
+   <div class="btn-group">
+     <a href="{{ path('admin_reservation_index') }}" class="btn btn-primary">Retour à la liste</a>
+        <a href="{{ path('admin_reservation_edit', { id: reservation.id }) }}" class="btn btn-warning">Modifier</a>
+        {# <a href="{{ path('admin_service_delete', { id: reservation.service.id }) }}" class="btn btn-danger">Supprimer</a> #}
+   </div>
+{% endblock %}

@@ -5,13 +5,18 @@
 			<a href="{{ path('app_home') }}">Accueil</a>
 		</li>
 		<li>
-			<a href="#horaires">Horaire</a>
+			<a href="#horaires">Horaires</a>
 		</li>
 		<li>
-			<a href="{{ path('app_service') }}">Service</a>
+			<a href="{{ path('app_service') }}">Services</a>
 		</li>
 		<li>
 			<a href="">Contact</a>
 		</li>
+		{% if app.user %}
+			<li>
+				<a href="{{ path('index_list_reservation') }}">Mes réservations</a>
+			</li>
+		{% endif %}
 	</ul>
 </div>

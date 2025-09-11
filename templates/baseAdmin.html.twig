@@ -24,6 +24,7 @@
 				{{ importmap('app') }}
 			{% endblock %}
 			<script src="{{ asset('js/sidebar.js') }}"></script>
+			<script src="{{ asset('js/app.js') }}"></script>
 		{% endblock %}
 
 	</head>
@@ -35,10 +36,10 @@
 
 		<nav class="sidebar" id="sidebar">
 			<h2>Menu</h2>
-			<a href="{{ path('app_admin') }}">Dashboard</a>
-			<a href="#">Utilisateurs</a>
+			<a href="{{ path('app_admin') }}">Tableau de bord</a>
+			<a href="#">Contacts</a>
 			<a href="{{ path('admin_service_index') }}">Services</a>
-			<a href="#">Réservations</a>
+			<a href="{{ path('admin_reservation_index') }}">Réservations</a>
 			<a href="{{ path('index_admin_comment') }}">Commentaires</a>
 			<a href="{{ path('app_logout') }}">Déconnexion</a>
 			<a href="{{ path('app_home') }}">Retour</a>
@@ -55,13 +56,13 @@
 		{# pour afficher les messages flash #}
 			{% for label, messages in app.flashes %}
 					{% for message in messages %}
-						<div class="flash-{{ label }}">
+						<div class="flash flash-{{ label }}">
 							{{ message }}
 						</div>
 					{% endfor %}
 				{% endfor %}
-			{% block body %}
-				
+
+			{% block body %}				
 			{% endblock %}
 		</main>
 

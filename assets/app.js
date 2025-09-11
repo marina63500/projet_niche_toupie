@@ -20,7 +20,8 @@ import './styles/app.css';
 
 // import mon js  
 import './js/navbarmobile.js';
-// import './js/slider.js';
+import './js/flashmessages.js';
+import './js/slider.js';
 // import './js/sidebar.js';
 
 

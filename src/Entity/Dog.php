@@ -28,8 +28,10 @@ class Dog
     /**
      * @var Collection<int, Reservation>
      */
-    #[ORM\ManyToMany(targetEntity: Reservation::class, inversedBy: 'dogs')]
+    #[ORM\OneToMany(targetEntity: Reservation::class, mappedBy: 'dog')]
     private Collection $reservations;
+
+    
 
     public function __construct()
     {
@@ -89,6 +91,7 @@ class Dog
     {
         if (!$this->reservations->contains($reservation)) {
             $this->reservations->add($reservation);
+            $reservation->setDog($this);
         }
 
         return $this;
@@ -96,8 +99,15 @@ class Dog
 
     public function removeReservation(Reservation $reservation): static
     {
-        $this->reservations->removeElement($reservation);
+        if ($this->reservations->removeElement($reservation)) {
+            // set the owning side to null (unless already changed)
+            if ($reservation->getDog() === $this) {
+                $reservation->setDog(null);
+            }
+        }
 
         return $this;
     }
+
+    
 }

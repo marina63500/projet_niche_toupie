@@ -11,14 +11,14 @@
 		</title>
 
 
-		<link rel="icon" href="{{ asset('images/favicon.svg') }}" type="image/svg+xml"> 
-
-		{% block stylesheets %}{% endblock %}
+		<link rel="icon" href="{{ asset('images/favicon.svg') }}" type="image/svg+xml"> {% block stylesheets %}{% endblock %}
 
 		{% block javascripts %}
 			{% block importmap %}
 				{{ importmap('app') }}
 			{% endblock %}
+			<script src="{{ asset('js/app.js') }}"></script>
+
 		{% endblock %}
 
 	</head>
@@ -33,12 +33,13 @@
 
 		<main>
 			{% for label, messages in app.flashes %}
-					{% for message in messages %}
-						<div class="flash-{{ label }}">
-							{{ message }}
-						</div>
-					{% endfor %}
+				{% for message in messages %}
+					<div class="flash flash-{{ label }}">
+						{{ message }}
+					</div>
 				{% endfor %}
+			{% endfor %}
+
 			{% block body %}{% endblock %}
 		</main>
 

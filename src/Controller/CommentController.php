@@ -92,7 +92,7 @@ final class CommentController extends AbstractController
             $this->addFlash('success', 'Commentaire supprimé avec succès.');
         
 
-        return $this->redirectToRoute('service_show', ['id' => $comment->getService()->getId()]);
+        return $this->redirectToRoute('app_service_show', ['id' => $comment->getService()->getId()]);
 
     }
 

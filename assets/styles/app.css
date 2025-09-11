@@ -419,7 +419,7 @@ h4 {
 
 /* messages flash */
 .flash-success,
-.flash-danger,
+.flash-error,
 .flash-info {
     padding: 12px 20px;
     margin: 15px auto;
@@ -443,6 +443,61 @@ h4 {
     background-color: #cce5ff;
     color: #004085;
 }
+
+/* mes reservations */
+.reservations-list {
+    max-width: 800px;
+    margin: 20px auto;
+    padding: 0 1rem;
+    box-sizing: border-box;
+    background-color: rgba(135, 169, 34, 0.2);
+    border-radius: 10px; 
+
+    }
+.reservations-list ul {
+    list-style: disc;
+    padding: 20px;
+}
+.reservations-list li {
+    margin-bottom: 20px;
+    font-family: "Nunito", sans-serif;
+    font-size: 1.1rem;
+    line-height: 1.5;
+    border-bottom: 1px solid #114232;
+    padding-bottom: 15px;
+}
+
+.reservations-list li:last-child{
+    margin-bottom: 40px;
+    border-bottom: none;
+}    
+
+.reservation-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.reservation-actions {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+}
+
+.btn-cancel{
+    background-color: #d9534f;
+    color: #fff;
+    border: none;
+    padding: 0.5rem 1rem;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background 0.3s ease;
+    font-family: "Nunito", sans-serif;
+    font-size: 0.9rem;
+    margin-left: 10px;
+    text-decoration: none ;
+}
+
 
 /* Responsive */
 @media (max-width: 768px) {
@@ -543,5 +598,13 @@ h4 {
 
     .box3 {
         flex-direction: column;
+    }
+}
+
+@media (max-width: 480px) {
+    .reservation-actions {
+        justify-content: center;
+        margin-top: 10px;
+        
     }
 }

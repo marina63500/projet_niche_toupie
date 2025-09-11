@@ -14,6 +14,7 @@
 {% endblock %}
 
 {% block body %}
+	{# afficher les détails d'un service #}
 	<div class="container" id="show_container">
 
 		<div class="boxbanner_image">
@@ -44,7 +45,7 @@
 
 
 		<div class="show_btn">
-			<a href="{{ path('app_service') }}" class="btn-contact">Réserver</a>
+			<a href="{{ path('reservation_create', { id: service.id }) }}" class="btn-contact">Réserver</a>
 		</div>
 
 	</div>
@@ -70,39 +71,36 @@
 	</div>
 
 	<div class="show_btn">
-		<a href="{{ path('app_service') }}" class="btn-contact">Réserver</a>
+		<a href="{{ path('reservation_create', { id: service.id }) }}" class="btn-contact">Réserver</a>
 	</div>
 
 
-
-
-{#  section commentaire #}
+	{#  section commentaire #}
 
 	<h2>Laisser un commentaire</h2>
 
-		
-		<div class="comment-form ">
-			{% if app.user %}
-    			{{ form_start(form) }}
 
-					<div class="form-content">
-       		 	 		{{ form_row(form.content) }}        				
-					</div>
-					<div class="form-btn">
-						<button type="submit" class="btn btn-send mt-2 " id="send-button">Envoyer</button>
-					</div>
+	<div class="comment-form ">
+		{% if app.user %}
+			{{ form_start(form) }}
 
-    			{{ form_end(form) }}
-			
-			{% else %}
+			<div class="form-content">
+				{{ form_row(form.content) }}
+			</div>
+			<div class="form-btn">
+				<button type="submit" class="btn btn-send mt-2 " id="send-button">Envoyer</button>
+			</div>
 
-    		<p class="form-connexion">
-        		<a href="{{ path('app_login') }}">Connectez-vous</a> pour laisser un commentaire.
-    		</p>
-			{% endif %}
-		</div>
+			{{ form_end(form) }}
 
+		{% else %}
 
+			<p class="form-connexion">
+				<a href="{{ path('app_login') }}">Connectez-vous</a>
+				pour laisser un commentaire.
+			</p>
+		{% endif %}
+	</div>
 
 
 	{#  afficher les commentaires #}
@@ -111,32 +109,33 @@
 		{% for comment in service.comments| sort((a, b) => a.createdAt < b.createdAt ? 1 : -1) %}
 			{# sort filtre par date  car j ai deja tous dans service #}
 
-				
-				
-					<div class="comment"> 
-						<div class="comment-header">
 
-							<p>
-								<strong>Auteur : {{ comment.user.pseudo }}</strong>
-							</p>
+			<div class="comment">
+				<div class="comment-header">
 
-							<small>Posté le
-							{{ comment.createdAt|date('d/m/Y H:i') }}
-							</small>
-						</div>
+					<p>
+						<strong>Auteur :
+							{{ comment.user.pseudo }}</strong>
+					</p>
 
-						<p>{{ comment.content }}</p>
-{% if app.user and app.user.id == comment.user.id %}
-						<div class="comment-actions">
-							<a href="{{ path('comment_delete', { id: comment.id }) }}" class="btn btn-danger btn-sm" onclick="return confirm('⚠️ Es-tu sûr de vouloir supprimer ce commentaire ?');">Supprimer</a>
-						</div>
-{% endif %}
+					<small>Posté le
+						{{ comment.createdAt|date('d/m/Y H:i') }}
+					</small>
+				</div>
 
+				<p>{{ comment.content }}</p>
+
+				{% if app.user and app.user.id == comment.user.id %}
+					<div class="comment-actions">
+						<a href="{{ path('comment_delete', { id: comment.id }) }}" class="btn btn-danger btn-sm" onclick="return confirm('⚠️ Es-tu sûr de vouloir supprimer ce commentaire ?');">Supprimer</a>
 					</div>
-					{% else %}
-						<p>Aucun commentaire pour ce service.</p>
-				
-	
+				{% endif %}
+
+			</div>
+		{% else %}
+			<p>Aucun commentaire pour ce service.</p>
+
+
 		{% endfor %}
 	</div>
 {% endblock %}

@@ -15,7 +15,7 @@
             </tr>
         </thead>
 
-        {# <a href="{{path('admin_comment_create')}}" class="btn btn-success">ajouter</a> #}
+       
         
         <tbody>
 
@@ -30,8 +30,7 @@
 
                     <td>
                     {# case action avec boutons#}
-                        {# <a href="{{ path('admin_comment_show', { id: comment.id }) }}" class="btn btn-info">Voir</a>
-                        <a href="{{ path('admin_comment_edit', { id: comment.id }) }}" class="btn btn-warning">Modifier</a> #}
+                      
                         <a href="{{ path('admin_comment_delete', { id: comment.id }) }}" class="btn btn-danger"  onclick="return confirm('⚠️ Es-tu sûr de vouloir supprimer ce commentaire ?');">Supprimer</a>  
                     </td>
                 </tr>

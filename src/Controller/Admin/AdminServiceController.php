@@ -109,6 +109,7 @@ final class AdminServiceController extends AbstractController
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+            $entityManager->persist($service);
             $entityManager->flush();
 
             $this->addFlash('success', 'Service modifié avec succès.');

@@ -39,15 +39,14 @@ class Reservation
      #[ORM\Column]
      private array $historical = [];
 
-     /**
-      * @var Collection<int, Dog>
-      */
-     #[ORM\ManyToMany(targetEntity: Dog::class, mappedBy: 'reservations')]
-     private Collection $dogs;
+     #[ORM\ManyToOne(inversedBy: 'reservations')]
+     #[ORM\JoinColumn(nullable: false)]
+     private ?Dog $dog = null;
 
+    
      public function __construct()
      {
-         $this->dogs = new ArrayCollection();
+         
      }
 
     public function getId(): ?int
@@ -139,30 +138,17 @@ class Reservation
         return $this;
     }
 
-    /**
-     * @return Collection<int, Dog>
-     */
-    public function getDogs(): Collection
+    public function getDog(): ?Dog
     {
-        return $this->dogs;
+        return $this->dog;
     }
 
-    public function addDog(Dog $dog): static
+    public function setDog(?Dog $dog): static
     {
-        if (!$this->dogs->contains($dog)) {
-            $this->dogs->add($dog);
-            $dog->addReservation($this);
-        }
+        $this->dog = $dog;
 
         return $this;
     }
 
-    public function removeDog(Dog $dog): static
-    {
-        if ($this->dogs->removeElement($dog)) {
-            $dog->removeReservation($this);
-        }
-
-        return $this;
-    }
+    
 }

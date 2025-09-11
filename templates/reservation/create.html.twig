@@ -1,0 +1,48 @@
+{% extends 'base.html.twig' %}
+
+
+
+{% block stylesheets %}
+    <link rel="stylesheet" href="{{ asset('styles/app.css') }}">
+{% endblock %}
+
+{% block javascripts %}
+    {% block importmap %}
+        {{ importmap('app') }}
+    {% endblock %}
+{% endblock %}
+
+{% block body %}
+
+  {# Vérifie si l'utilisateur est connecté #}
+   {% if app.user %}
+
+        <div class="container mt-4">
+            <div class="row justify-content-center">
+                <div class="col-12 col-sm-10 col-md-8 col-lg-6 col-xl-5">
+                
+                    <div class="p-3">
+                        <h1>Réservation</h1>
+
+                        {{ form_start(form) }}
+                        {{ form_row(form.reservationDate) }}
+                        {{ form_row(form.dog) }}
+            
+            {# <button type="submit" class="btn-contact">Réserver</button> #}
+                            
+
+                            <div class="form-actions">
+                                {# <button type="submit" class="btn-submit">Valider la réservation</button> #}
+                                {# <a href="{{ path('reservation_create', {'id': service.id}) }}" class="btn-cancel">
+                                Annuler
+                                </a> #}
+                                <button type="submit" class="btn-contact">Envoyer la demande de réservation
+                            </button>
+                            </div>
+                        {{ form_end(form) }}
+                    </div>
+                </div>
+            </div>
+        </div>
+    {% endif %}
+{% endblock %}
