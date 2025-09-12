@@ -1,4 +1,3 @@
-document.addEventListener('turbo:load', () => {
 
 
 
@@ -7,15 +6,7 @@ document.addEventListener('turbo:load', () => {
 const slides = document.querySelectorAll('.slide'); 
 const prev = document.getElementById('prevBtn');
 const next = document.getElementById('nextBtn');
-let interval = null;
 
-if(slides.length === 0){
-    console.log('ici');
-        if(interval !== null){
-        clearInterval(interval);
-        interval = null;
-    }
-}
 if (slides.length !== 0) {
 
     let index = 0;
@@ -49,7 +40,7 @@ showSlide(index);
 
 
 // interval automatique
-interval = setInterval(() => {
+setInterval(() => {
     index++;
     if (index >= slides.length) {
         index = 0;
@@ -59,12 +50,3 @@ interval = setInterval(() => {
 
 
 }
-
-
-
-}
-
-
-
-// }
-);

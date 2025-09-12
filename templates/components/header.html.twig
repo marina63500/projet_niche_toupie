@@ -13,11 +13,14 @@
 
 		{# pour se connecter/déconnecter #}
 
-		<div class="btn-toggle">
+		<div class="btn-boxprofile">
+			{# si user connecté #}
 			{% if app.user %}
 				{# user connected #}
 				<span class="hello">Bonjour,
 					{{ app.user.firstName }}</span>
+
+					<a href="{{ path('profile_edit') }}" class="btn btn-profile"><img src="{{asset('images/profile.svg')}}" alt="Profile" /></a>
 
 				<a class="btn-login" href="{{path('app_logout')}}">Se déconnecter</a>
 

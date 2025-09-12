@@ -22,7 +22,7 @@
                 <tr>
                     
                     <td>{{ service.title }}</td>
-                    {# <td>{{ service.reservations|length }}</td> #}
+                    <td>{{ service.reservations|length }}</td>
                     <td>{{ service.price }} €</td>
                     
 
@@ -30,7 +30,7 @@
                     {# case action avec boutons #}
                         <a href="{{ path('admin_service_show', { id: service.id }) }}" class="btn btn-info">Voir</a>
                         <a href="{{ path('admin_service_edit', { id: service.id }) }}" class="btn btn-warning">Modifier</a>
-                        <a href="{{ path('admin_service_delete', { id: service.id }) }}" class="btn btn-danger">Supprimer</a>
+                        <a href="{{ path('admin_service_delete', { id: service.id }) }}" class="btn btn-danger" onclick="return confirm(' Es-tu sûr de vouloir supprimer ce service ?');">Supprimer</a>
                     </td> 
                 </tr>
             {% endfor %}
@@ -38,3 +38,4 @@
         </tbody>
     </table>
 {% endblock %}
+ 

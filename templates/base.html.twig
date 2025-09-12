@@ -11,14 +11,14 @@
 		</title>
 
 
-		<link rel="icon" href="{{ asset('images/favicon.svg') }}" type="image/svg+xml"> {% block stylesheets %}{% endblock %}
+		<link rel="icon" href="{{ asset('images/favicon.svg') }}" type="image/svg+xml">
+		{% block stylesheets %}
+			{{ encore_entry_link_tags('app') }}
+		{% endblock %}
+
 
 		{% block javascripts %}
-			{% block importmap %}
-				{{ importmap('app') }}
-			{% endblock %}
-			<script src="{{ asset('js/app.js') }}"></script>
-
+			{{ encore_entry_script_tags('app') }}
 		{% endblock %}
 
 	</head>

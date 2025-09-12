@@ -11,9 +11,10 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Attribute\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
+// Gestion des réservations côté admin
 #[Route('/admin/reservation')]
 final class AdminReservationController extends AbstractController
-{
+{// voir toutes les réservations
     #[Route('', name: 'admin_reservation_index')]
     public function index(ReservationRepository $reservationRepository): Response
     {
@@ -26,7 +27,7 @@ final class AdminReservationController extends AbstractController
             'reservations' => $reservations,
         ]);
     }
-
+// voir le détail d'une réservation
     #[Route('/show/{id}', name: 'admin_reservation_show')]
     public function show($id, ReservationRepository $reservationRepository): Response
     {
@@ -42,7 +43,7 @@ final class AdminReservationController extends AbstractController
             'reservation' => $reservation,
         ]);
     }
-
+// modifier une réservation
     #[Route('/edit/{id}', name: 'admin_reservation_edit')]
     public function edit($id, ReservationRepository $reservationRepository, EntityManagerInterface $entityManager, Request $request): Response
     {

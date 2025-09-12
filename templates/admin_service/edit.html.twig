@@ -1,35 +1,50 @@
-
 {% extends 'baseAdmin.html.twig' %}
 
 {% block body %}
-    <h1>Modifier un service</h1>
+	<h1>Modifier un service</h1>
 
-    <div class="container mt-4">
-        <div class="row justify-content-center">
-            <div class="col-12 col-sm-10 col-md-8 col-lg-6 col-xl-5">
-                {# <h2 class="mb-4 text-center">Ajouter un service</h2> #}
 
-                <div class="p-3">
-               
+	<div class="container mt-4">
+		<div class="row justify-content-center">
+			<div
+				class="col-12 col-sm-10 col-md-8 col-lg-6 col-xl-5">
+				{# <h2 class="mb-4 text-center">Ajouter un service</h2> #}
 
-                {{ form_start(form) }}
+				<div class="p-3">
 
-                    {{ form_row(form.ImageHeader) }}
-                    {{ form_row(form.title) }}
-                    {{ form_row(form.image) }}
-                    {{ form_row(form.description) }}
-                    {{ form_row(form.price) }}
-                    {{ form_row(form.paragraph) }}                 
 
-                   
-                    <div class="text-center mt-3">
-                        <button type="submit" class="btn btn-contact mt-3">Enregistrer</button>
-                    </div>
+					{{ form_start(form) }}
 
-                {{ form_end(form) }}
-                </div>
-            </div>
-        </div>
-    </div>
- 
+					{# aperçu de l'image-header actuelle #}
+					{% if service.ImageHeader %}
+						<div class="mb-3">
+							<p>Bannière actuelle :</p>
+							<img src="{{ asset(service.ImageHeader) }}" alt="{{ service.title }}" class="img-fluid" style="max-width: 300px;">
+						</div>
+					{% endif %}
+					{{ form_row(form.ImageHeader) }}
+					{{ form_row(form.title) }}
+					{# aperçu de l'image actuelle #}
+					{% if service.image %}
+						<div class="mb-3">
+							<p>Image actuelle :</p>
+							<img src="{{ asset(service.image) }}" alt="{{ service.title }}" class="img-fluid" style="max-width: 300px;">
+						</div>
+					{% endif %}
+					{{ form_row(form.image) }}
+					{{ form_row(form.description) }}
+					{{ form_row(form.price) }}
+					{{ form_row(form.paragraph) }}
+
+
+					<div class="text-center mt-3">
+						<button type="submit" class="btn btn-contact mt-3">Enregistrer</button>
+					</div>
+
+					{{ form_end(form) }}
+				</div>
+			</div>
+		</div>
+	</div>
+
 {% endblock %}

@@ -5,6 +5,7 @@ namespace App\Controller;
 use Dom\Entity;
 
 use App\Entity\Reservation;
+use App\Entity\User;
 use App\Form\ReservationType;
 use App\Repository\DogRepository;
 use App\Repository\UserRepository;
@@ -12,6 +13,7 @@ use App\Enum\ReservationStatusEnum;
 use App\Repository\ServiceRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use App\Repository\ReservationRepository;
+use Doctrine\ORM\Mapping\Id;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Attribute\Route;
@@ -30,7 +32,7 @@ final class ReservationController extends AbstractController
             return $this->redirectToRoute('app_login');
         }
 
-
+        
         $reservations = $entityManager->getRepository('App\Entity\Reservation')->findBy([
             'user' => $user
         ], [
@@ -46,6 +48,10 @@ final class ReservationController extends AbstractController
     #[Route('/create/service/{id}', name: 'reservation_create')]
     public function create(int $id, ServiceRepository $serviceRepository, DogRepository $dogRepository, EntityManagerInterface $entityManager, Request $request): Response
     {
+
+        /**
+         * @var User $user
+         */
         $user = $this->getUser();
         if (!$user) {
             $this->addFlash('error', 'Vous devez être connecté pour créer une réservation.');
@@ -56,13 +62,14 @@ final class ReservationController extends AbstractController
         
       
 
-        $reservation = new Reservation();
-       
+        $reservation = new Reservation();       
 
         // On passe les chiens disponibles au formulaire via une option
         $form = $this->createForm(ReservationType::class, $reservation, [
             'user_dogs' => $userDogs,
         ]);
+
+
        
 
         $form->handleRequest($request);
@@ -72,11 +79,42 @@ final class ReservationController extends AbstractController
             $reservation->setUser($user);
             $reservation->setService($serviceRepository->find($id));   
             $reservation->setCreatedAt(new \DateTime());
-            // $reservation->setHistorical([
-            //     'createdAt' => new \DateTime(),
-            //     'createdBy' => $user,
-            //     'status' => 'En attente'
-            // ]);
+
+            $reservation->setHistorical([
+                  'historical'=> [
+
+                  'user'=> [
+                       'id'=>$user->getId(),
+                       'email'=> $user->getEmail(),
+                       'lastName'=> $user->getLastName(),
+                       'firstName'=> $user->getFirstName(),
+                   ],
+
+                   'reservation'=>[
+                         'date'=> $reservation->getReservationDate()->format('Y-m-d H:i:s'),
+                         'created_at'=> $reservation->getCreatedAt()->format('Y-m-d H:i:s'),
+                         'status'=> $reservation->getStatus(),
+                         'price'=> $reservation->getPrice(),
+                         'dog'=> [
+                             'id'=> $reservation->getDog()->getId(),
+                             'name'=> $reservation->getDog()->getName(),
+                             'race'=> $reservation->getDog()->getRace(),
+                         ],
+                            'service'=> [
+                                'id'=> $reservation->getService()->getId(),
+                                'title'=> $reservation->getService()->getTitle(),
+                                'price'=> $reservation->getService()->getPrice(),
+                         ],
+                       
+
+               ],
+
+               ],
+                    
+                   ],
+             
+            );
+
             $reservation->setPrice($reservation->getService()->getPrice());
             $reservation->setStatus(ReservationStatusEnum::PENDING); // voir enum
 
@@ -113,6 +151,13 @@ final class ReservationController extends AbstractController
         if (!$reservation) {
             throw $this->createNotFoundException('Réservation non trouvée');
         }
+
+
+        if ($reservation->getUser() !== $user) {
+            $this->addFlash('error', 'Vous n\'êtes pas autorisé à annuler cette réservation.');
+            return $this->redirectToRoute('index_list_reservation');
+        }
+
         // je recupere le statue et Changer le statut en "annulée"
         $reservation->setStatus(ReservationStatusEnum::CANCELED);
         $entityManager->persist($reservation);

@@ -1,0 +1,22 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Ajouter un chien{% endblock %}
+
+{% block body %}
+    <h1>Ajouter un chien</h1>
+
+    <div class="container mt-5">
+        <div class="row justify-content-center">
+            <div class="col-12 col-sm-10 col-md-8 col-lg-6 col-xl-5">
+               
+
+                <div class="p-3">
+                    {{ form_start(form) }}
+                    {{ form_widget(form) }}
+                    <button class="btn btn-primary">Ajouter</button>
+                    {{ form_end(form) }}
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

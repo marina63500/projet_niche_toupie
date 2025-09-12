@@ -35,6 +35,7 @@ class Service
     private ?string $paragraph = null;
 
     /**
+     * //on ne met pas en cascade ,car on veut pas supprimer les réservations associées au service,on met une condition dans le controller service
      * @var Collection<int, Reservation>
      */
     #[ORM\OneToMany(targetEntity: Reservation::class, mappedBy: 'service')]
@@ -43,7 +44,7 @@ class Service
     /**
      * @var Collection<int, Comment>
      */
-    #[ORM\OneToMany(targetEntity: Comment::class, mappedBy: 'service')]
+    #[ORM\OneToMany(targetEntity: Comment::class, mappedBy: 'service', cascade: ['remove'])]
     private Collection $comments;
 
     public function __construct()

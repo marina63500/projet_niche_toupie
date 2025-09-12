@@ -1,0 +1,58 @@
+{# templates/user/profile_edit.html.twig #}
+
+{% extends 'base.html.twig' %}
+
+{% block title %}Modifier mon profil
+{% endblock %}
+
+{% block body %}
+	<h1>Modifier mon profil</h1>
+	<div class="container mt-5">
+		<div class="row justify-content-center">
+			<div
+				class="col-12 col-sm-10 col-md-8 col-lg-6 col-xl-5">
+				{# <h2 class="mb-4 text-center">Ajouter un service</h2> #}
+
+				<div class="p-3">
+
+
+					{{ form_start(form) }}
+					{{ form_row(form.lastName) }}
+					{{ form_row(form.firstName) }}
+					{{ form_row(form.email) }}
+
+
+					<div class="text-center mt-3">
+						<button type="submit" class="btn btn-contact">Enregistrer</button>
+					</div>
+					{{ form_end(form) }}
+
+					<h2>Mes chiens</h2>
+
+					{# Ajouter un chien #}
+					<div class="add-dog mb-3">
+						<a href="{{ path('dog_add') }}" class="btn btn-dog">
+							+ chien</a>
+					</div>
+
+					<ul class="dog-list">
+
+						{% for dog in dogs %}
+							<li class="dog">
+								{{ dog.name }}
+								-
+								{{ dog.race }}
+
+								<a href="{{ path('dog_delete', {'id': dog.id}) }}" class="btn btn-delete" onclick="return confirm('Êtes-vous sûr de vouloir supprimer ce chien ?');">Supprimer</a>
+							</li>
+							<hr>
+						{% else %}
+							<li>Aucun chien ajouté.</li>
+						{% endfor %}
+
+					</ul>
+				</div>
+			</div>
+		</div>
+	</div>
+{% endblock %}

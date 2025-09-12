@@ -15,16 +15,11 @@
 
 
 		{% block stylesheets %}
-			<link rel="stylesheet" href="{{ asset('styles/sidebar.css') }}">
-			<link rel="stylesheet" href="{{ asset('styles/admin.css') }}">
+			{{ encore_entry_link_tags('app') }}
 		{% endblock %}
 
 		{% block javascripts %}
-			{% block importmap %}
-				{{ importmap('app') }}
-			{% endblock %}
-			<script src="{{ asset('js/sidebar.js') }}"></script>
-			<script src="{{ asset('js/app.js') }}"></script>
+			{{ encore_entry_script_tags('app') }}
 		{% endblock %}
 
 	</head>
@@ -47,23 +42,22 @@
 
 		<div
 			class="content" id="content">{# <h1>Tableau de bord</h1>
-							<p>Bienvenue dans ton espace admin</p> #}
+											<p>Bienvenue dans ton espace admin</p> #}
 		</div>
 
-	
 
-		<main class="admin-main">
-		{# pour afficher les messages flash #}
+		<main
+			class="admin-main">
+			{# pour afficher les messages flash #}
 			{% for label, messages in app.flashes %}
-					{% for message in messages %}
-						<div class="flash flash-{{ label }}">
-							{{ message }}
-						</div>
-					{% endfor %}
+				{% for message in messages %}
+					<div class="flash flash-{{ label }}">
+						{{ message }}
+					</div>
 				{% endfor %}
+			{% endfor %}
 
-			{% block body %}				
-			{% endblock %}
+			{% block body %}{% endblock %}
 		</main>
 
 	</body>

@@ -104,7 +104,7 @@ footer {
 .navbar .nav-items a:hover {
     display: inline-block; /* nécessaire pour appliquer transform */
     color: #fcdc2a;
-    transform: scale(1.5);
+    transform: scale(1.2);
 }
 
 span.hello {
@@ -112,6 +112,84 @@ span.hello {
     color: #f7f6bb;
     font-weight: bold;
 }
+
+/* css profile */
+.btn-boxprofile {   
+    display:flex;
+    gap: 15px; 
+    align-items: center;
+    justify-content: center;
+    /* border: none;
+    color: #f7f6bb;    */
+    cursor: pointer;
+}
+
+.btn-profile  {    
+    align-items: center;    
+    width: 50px;
+    height: 50px;
+    background-color: #114232;    
+    border-radius: 50%;    
+    font-size: 20px;   
+}
+.btn-profile img {
+    width: 24px;
+    height: 24px;   
+}
+.btn-profile:hover {
+    background-color: #87a922;  
+     
+}
+
+
+.add-dog {
+    text-decoration: none;
+    font-size: 1.2rem;     
+    padding: 0.5rem 1rem;
+    border-radius: 10px;    
+    transition: background 0.3s ease;
+    text-align: right;
+}
+
+.add-dog .btn-dog{
+    color: #f7f6bb;
+    text-decoration: none;
+    background: #114232;
+    padding: 0.5rem 1rem;
+    border-radius: 10px;
+    color: #f7f6bb;
+    font-weight: bold;
+    transition: background 0.3s ease;
+}
+
+.add-dog .btn-dog:hover {
+    background: #87a922;
+    color: #114232;
+}
+
+.dog-list {       
+    margin-top: 1rem;    
+    font-size: 1.1rem;
+}
+
+
+.dog {
+    padding: 0.5rem 0;    
+    display: flex;
+    gap:20px;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.dog-list a {
+    background-color: #d9534f;
+    color: #fff;    
+    padding: 0.3rem 0.6rem;
+    border-radius: 5px;
+    cursor: pointer;      
+}
+
+
 
 .navbar .btn-login {
     background-color: #114232;
@@ -453,11 +531,13 @@ h4 {
     background-color: rgba(135, 169, 34, 0.2);
     border-radius: 10px; 
 
-    }
+}
+
 .reservations-list ul {
     list-style: disc;
     padding: 20px;
 }
+
 .reservations-list li {
     margin-bottom: 20px;
     font-family: "Nunito", sans-serif;
@@ -524,6 +604,9 @@ h4 {
     .navbar .nav-items,
     .navbar .btn-login {
         display: none;
+    }
+    .btn-boxprofile {
+        gap: 5px;
     }
 
     .burger {
@@ -607,4 +690,18 @@ h4 {
         margin-top: 10px;
         
     }
+}
+
+/* profile  */
+@media (max-width: 480px) {
+    .dog {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .dog-list a {
+        margin-top: 10px;
+    }
+
+ 
 }

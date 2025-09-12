@@ -1,4 +1,3 @@
- document.addEventListener('turbo:load', () => {
 
    const sidebarBtn = document.getElementById('sidebarBtn');
    const sidebar = document.getElementById('sidebar');
@@ -13,4 +12,3 @@
     });
   }
 
-});

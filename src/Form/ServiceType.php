@@ -10,6 +10,7 @@ use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Form\Extension\Core\Type\FileType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\Extension\Core\Type\MoneyType;
+use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 
 class ServiceType extends AbstractType
@@ -25,30 +26,32 @@ class ServiceType extends AbstractType
 
             ->add('image', FileType::class, [
                 'label' => 'Image du service',
-                'required' => true,
-                // 'mapped' => false, // pour gérer l'upload moi meme,ne lie pas direct a l'entité
-            //     'constraints' => [
-            //         new File([
-            //             'maxSize' => '1024k',
-            //             'mimeTypes' => [
-            //                 'image/jpeg',
-            //                 'image/png',
-            //                 'image/jpg',
-            //                 'image/webp',
-            //             ],
-            //             'mimeTypesMessage' => 'Please upload a valid image (JPEG , PNG, JPG, WEBP)',
-            //         ])
-            //     ],
+                'required' => false,
+                'mapped' => false,
+                'constraints' => [
+                    new File([
+                        'maxSize' => '2M',
+                        'mimeTypes' => [
+                            'image/jpeg',
+                            'image/png',
+                            'image/gif',
+                            'image/webp',
+                        ],
+                        'mimeTypesMessage' => 'Please upload a valid image file (JPEG, PNG, GIF, WEBP)',
+                    ])
+                ],
+
             ])
 
             ->add('description', TextareaType::class, [
                 'label' => 'Description du service',
                 'required' => true,
-                'attr' => ['rows' => 10,
-                            'cols' => 20,
-                          ] // Définit le nombre de colonnes visibles dans le textarea
+                'attr' => [
+                    'rows' => 10,
+                    'cols' => 20,
+                ]
             ])
-            
+
             ->add('price', MoneyType::class, [
                 'label' => 'Prix du service',
                 'required' => true,
@@ -56,28 +59,30 @@ class ServiceType extends AbstractType
 
             ->add('ImageHeader', FileType::class, [
                 'label' => 'Image bannière du service',
-                'required' => true,
-                // 'mapped' => false,
-                // 'constraints' => [
-                //     new File([
-                //         'maxSize' => '1024k',
-                //         'mimeTypes' => [
-                //             'image/jpeg',
-                //             'image/png',
-                //             'image/jpg',
-                //             'image/webp',
-                //         ],
-                //         'mimeTypesMessage' => 'Please upload a valid image (JPEG , PNG, JPG, WEBP)',
-                //     ])
-                // ],
+                'required' => false,
+                'mapped' => false,
+                'constraints' => [
+                    new File([
+                        'maxSize' => '2M',
+                        'mimeTypes' => [
+                            'image/jpeg',
+                            'image/png',
+                            'image/gif',
+                            'image/webp',
+                        ],
+                        'mimeTypesMessage' => 'Please upload a valid image file (JPEG, PNG, GIF, WEBP)',
+                    ])
+                ],
+
             ])
-            
+
             ->add('paragraph', TextareaType::class, [
                 'label' => 'Détails du service',
                 'required' => true,
-                'attr' => ['rows' => 10,
-                            'cols' => 30,
-                          ] 
+                'attr' => [
+                    'rows' => 10,
+                    'cols' => 30,
+                ]
             ])
         ;
     }
