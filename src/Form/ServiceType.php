@@ -20,7 +20,11 @@ class ServiceType extends AbstractType
         $builder
             ->add('title', TextType::class, [
                 'label' => 'Title du service',
-                'attr' => ['placeholder' => 'Entrez le titre du service'],
+                'attr' => ['placeholder' => 'Entrez le titre du service',
+                            'style' => 'background-color: rgba(135, 169, 34, 0.2);
+                               border: 2px solid #114232;
+                               border-radius: 5px;
+                               padding: 10px;'],
                 'required' => true,
             ])
 
@@ -40,6 +44,12 @@ class ServiceType extends AbstractType
                         'mimeTypesMessage' => 'Please upload a valid image file (JPEG, PNG, GIF, WEBP)',
                     ])
                 ],
+                'attr' => [
+                    'style' => 'background-color: rgba(135, 169, 34, 0.2);
+                               border: 2px solid #114232;
+                               border-radius: 5px;
+                               padding: 10px;',
+                ]
 
             ])
 
@@ -49,12 +59,24 @@ class ServiceType extends AbstractType
                 'attr' => [
                     'rows' => 10,
                     'cols' => 20,
+                    'style' => 'background-color: rgba(135, 169, 34, 0.2);
+                               border: 2px solid #114232;
+                               border-radius: 5px;
+                               padding: 10px;',
                 ]
+
             ])
 
             ->add('price', MoneyType::class, [
                 'label' => 'Prix du service',
                 'required' => true,
+                'currency' => 'EUR',
+                'attr' => [
+                    'style' => 'background-color: rgba(135, 169, 34, 0.2);
+                               border: 2px solid #114232;
+                               border-radius: 5px;
+                               padding: 10px;',
+                ]
             ])
 
             ->add('ImageHeader', FileType::class, [
@@ -73,6 +95,12 @@ class ServiceType extends AbstractType
                         'mimeTypesMessage' => 'Please upload a valid image file (JPEG, PNG, GIF, WEBP)',
                     ])
                 ],
+                'attr' => [
+                    'style' => 'background-color: rgba(135, 169, 34, 0.2);
+                               border: 2px solid #114232;
+                               border-radius: 5px;
+                               padding: 10px;',
+                ]
 
             ])
 
@@ -82,6 +110,10 @@ class ServiceType extends AbstractType
                 'attr' => [
                     'rows' => 10,
                     'cols' => 30,
+                    'style' => 'background-color: rgba(135, 169, 34, 0.2);
+                               border: 2px solid #114232;
+                               border-radius: 5px;
+                               padding: 10px;',
                 ]
             ])
         ;

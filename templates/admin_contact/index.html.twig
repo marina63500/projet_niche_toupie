@@ -1,0 +1,48 @@
+{% extends 'baseAdmin.html.twig' %}
+
+{% block title %}Hello AdminContactController!{% endblock %}
+
+{% block body %}
+    <h1>Liste des contacts</h1>
+
+    <table >
+        <thead>
+            <tr>   
+                <th>Date</th>             
+                <th>Email</th>
+                <th>Sujet</th>
+                <th>Message</th>
+                <th>Statut</th>
+               <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for contact in contacts %}
+                <tr>
+                     <td>{{ contact.createdAt|date('d-m-Y H:i') }}</td>
+                    <td>{{ contact.email }}</td>
+                    <td>{{ contact.subject }}</td>
+                    <td>{{ contact.content }}</td>
+
+                    {# gestion du statut avec badge couleur #}
+                            {# 0=true (traité) 1=false (non traité) #}
+                     <td>{% if contact.status == '1' %}
+                            <span class="badge bg-success">Traité</span>
+                       {% elseif contact.status == '0' %}
+                            <span class="badge bg-danger">Non traité</span>
+                          {% else %}
+                             {{ contact.status }}
+                    {% endif %}</td>               
+                    <td>
+                        <a href="{{ path('admin_contact_edit', {'id': contact.id}) }}" class="btn btn-warning btn-sm">Modifier</a>
+                    </td>
+                   
+                </tr>
+            {% else %}
+                <tr>
+                    <td colspan="5">Aucun message de contact trouvé.</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}

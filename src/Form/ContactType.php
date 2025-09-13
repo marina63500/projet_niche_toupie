@@ -6,12 +6,13 @@ use DateTime;
 use Dom\Text;
 use App\Entity\Contact;
 use Symfony\Component\Form\AbstractType;
-use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\Extension\Core\Type\EmailType;
+use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
 use Symfony\Component\Form\Extension\Core\Type\DateTimeType;
+use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 
 class ContactType extends AbstractType
 {
@@ -36,13 +37,15 @@ class ContactType extends AbstractType
                                 border: 2px solid #114232;',
                 ]
             ])
-            ->add('content', TextType::class, [
+            ->add('content', TextareaType::class, [
                 'label' => 'Message',
                 'required' => true,
                 'attr' => [
                     'placeholder' => 'Entrez votre message',
                     'style' => 'background-color: rgba(135, 169, 34, 0.2);
                                 border: 2px solid #114232;',
+                    'rows' => 10,
+                    'cols' => 20
                 ]
              
             ])

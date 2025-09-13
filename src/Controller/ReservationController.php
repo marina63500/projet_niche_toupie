@@ -32,14 +32,14 @@ final class ReservationController extends AbstractController
             return $this->redirectToRoute('app_login');
         }
 
-        
+
         $reservations = $entityManager->getRepository('App\Entity\Reservation')->findBy([
             'user' => $user
         ], [
             'reservationDate' => 'DESC'
         ]);
 
-        return $this->render('reservation/index.html.twig', [           
+        return $this->render('reservation/index.html.twig', [
             'reservations' => $reservations,
         ]);
     }
@@ -59,10 +59,10 @@ final class ReservationController extends AbstractController
         }
         // Récupérer les chiens de l'utilisateur
         $userDogs = $dogRepository->findBy(['user' => $user]);
-        
-      
 
-        $reservation = new Reservation();       
+
+
+        $reservation = new Reservation();
 
         // On passe les chiens disponibles au formulaire via une option
         $form = $this->createForm(ReservationType::class, $reservation, [
@@ -70,49 +70,50 @@ final class ReservationController extends AbstractController
         ]);
 
 
-       
+
 
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
 
             $reservation->setUser($user);
-            $reservation->setService($serviceRepository->find($id));   
+            $reservation->setService($serviceRepository->find($id));
             $reservation->setCreatedAt(new \DateTime());
 
-            $reservation->setHistorical([
-                  'historical'=> [
+            $reservation->setHistorical(
+                [
+                    'historical' => [
 
-                  'user'=> [
-                       'id'=>$user->getId(),
-                       'email'=> $user->getEmail(),
-                       'lastName'=> $user->getLastName(),
-                       'firstName'=> $user->getFirstName(),
-                   ],
+                        'user' => [
+                            'id' => $user->getId(),
+                            'email' => $user->getEmail(),
+                            'lastName' => $user->getLastName(),
+                            'firstName' => $user->getFirstName(),
+                        ],
 
-                   'reservation'=>[
-                         'date'=> $reservation->getReservationDate()->format('Y-m-d H:i:s'),
-                         'created_at'=> $reservation->getCreatedAt()->format('Y-m-d H:i:s'),
-                         'status'=> $reservation->getStatus(),
-                         'price'=> $reservation->getPrice(),
-                         'dog'=> [
-                             'id'=> $reservation->getDog()->getId(),
-                             'name'=> $reservation->getDog()->getName(),
-                             'race'=> $reservation->getDog()->getRace(),
-                         ],
-                            'service'=> [
-                                'id'=> $reservation->getService()->getId(),
-                                'title'=> $reservation->getService()->getTitle(),
-                                'price'=> $reservation->getService()->getPrice(),
-                         ],
-                       
+                        'reservation' => [
+                            'date' => $reservation->getReservationDate()->format('Y-m-d H:i:s'),
+                            'created_at' => $reservation->getCreatedAt()->format('Y-m-d H:i:s'),
+                            'status' => $reservation->getStatus(),
+                            'price' => $reservation->getPrice(),
+                            'dog' => [
+                                'id' => $reservation->getDog()->getId(),
+                                'name' => $reservation->getDog()->getName(),
+                                'race' => $reservation->getDog()->getRace(),
+                            ],
+                            'service' => [
+                                'id' => $reservation->getService()->getId(),
+                                'title' => $reservation->getService()->getTitle(),
+                                'price' => $reservation->getService()->getPrice(),
+                            ],
 
-               ],
 
-               ],
-                    
-                   ],
-             
+                        ],
+
+                    ],
+
+                ],
+
             );
 
             $reservation->setPrice($reservation->getService()->getPrice());
@@ -130,7 +131,7 @@ final class ReservationController extends AbstractController
             'form' => $form->createView(),
             'reservation' => $reservation,
             'service' => $reservation->getService(),
-            
+
         ]);
     }
 
@@ -140,14 +141,14 @@ final class ReservationController extends AbstractController
     {
         $user = $this->getUser();
 
-        if (!$user) {         
+        if (!$user) {
             $this->addFlash('error', 'Vous devez être connecté pour annuler une réservation.');
-            return $this->redirectToRoute('app_login');  
+            return $this->redirectToRoute('app_login');
         }
-        
+
 
         $reservation = $reservationRepository->find($id);
-    
+
         if (!$reservation) {
             throw $this->createNotFoundException('Réservation non trouvée');
         }
@@ -162,7 +163,7 @@ final class ReservationController extends AbstractController
         $reservation->setStatus(ReservationStatusEnum::CANCELED);
         $entityManager->persist($reservation);
 
-       
+
         $entityManager->flush();
 
         $this->addFlash('success', 'Votre réservation a été annulée avec succès.');

@@ -27,6 +27,7 @@ class ReservationType extends AbstractType
                 'widget' => 'single_text',                
                 'html5' => true,// calendrier
                 'required' => true, 
+              
             ])
 
            
@@ -38,7 +39,11 @@ class ReservationType extends AbstractType
                 // 'multiple' => true, // pour sélectionner un chien => true pour plusieurs
                 'expanded' => true, // pour des cases à cocher                
                 'required' => true,
-            ])
+                'label' => 'Choisissez le chien pour la réservation',
+               ]
+            )
+            ;
+            
 
             //gerer dans controller car en json
             // ->add('historical', json_encode([]), [

@@ -32,7 +32,7 @@
 		<nav class="sidebar" id="sidebar">
 			<h2>Menu</h2>
 			<a href="{{ path('app_admin') }}">Tableau de bord</a>
-			<a href="#">Contacts</a>
+			<a href="{{ path('admin_contact') }}">Contacts</a>
 			<a href="{{ path('admin_service_index') }}">Services</a>
 			<a href="{{ path('admin_reservation_index') }}">Réservations</a>
 			<a href="{{ path('index_admin_comment') }}">Commentaires</a>
@@ -41,8 +41,9 @@
 		</nav>
 
 		<div
-			class="content" id="content">{# <h1>Tableau de bord</h1>
-											<p>Bienvenue dans ton espace admin</p> #}
+			class="content" id="content">
+			{# <h1>Tableau de bord</h1>
+			<p>Bienvenue dans ton espace admin</p> #}
 		</div>
 
 

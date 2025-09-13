@@ -1,0 +1,28 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Demande de contact
+{% endblock %}
+
+{% block body %}
+	<h1>Contactez-nous</h1>
+	<div class="container mt-4">
+		<div class="row justify-content-center">
+			<div class="col-12  col-md-8 col-lg-6 ">
+
+				<div class="p-3 ">
+					{{ form_start(form) }}
+
+					{{ form_row(form.email) }}
+					{{ form_row(form.subject) }}
+					{{ form_row(form.content) }}
+
+					<div class="p-3 text-center">
+						<button type="submit" class="btn-contact">Envoyer</button>
+					</div>
+
+					{{ form_end(form) }}
+				</div>
+			</div>
+		</div>
+	</div>
+{% endblock %}
